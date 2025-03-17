@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 website:
-  title: "[Student xxxx]'s Analytics Lab"
+  title: "[Pınar Mürtezaoğlu]'s Analytics Lab"
   navbar:
     search: true
     left:
@@ -22,11 +22,11 @@ website:
             
     tools:
       - icon: github
-        href: https://twitter.com
+        href: https://github.com/emu-hacettepe-analytics/emu660-spring2025-pinarmurtezaoglu
       - icon: twitter
-        href: https://twitter.com
+        href: https://x.com/pnr_mrtz
       - icon: linkedin
-        href: https://linkedin.com
+        href: https://www.linkedin.com/in/p%C4%B1nar-m%C3%BCrtezao%C4%9Flu-7a19ab101/
 
   sidebar:
     - title: "Assignments"
@@ -39,7 +39,7 @@ website:
   page-navigation: true
   back-to-top-navigation: true
   page-footer:
-    center: "Hacettepe IE - EMU660 - Spring 2024" 
+    center: "Hacettepe IE - EMU660 - Spring 2025" 
     border: true
 format:
   html:
