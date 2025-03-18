@@ -32,9 +32,6 @@ output: html_document
 
 # Assignment 1
 
-```{r}
-```
-
 My first assignment has two parts:
 
 ## Part (A) Select a video and provide a brief summary in your Quarto document.
@@ -92,3 +89,95 @@ Technical skills are abilities that become important as you specialize in your j
 -   **Atomic Habits**, by James Clear
 
 -   **Fooled by Randomness**, by Nassim Nicholas Taleb
+
+#Part (B)
+
+```{r}
+compute_stats <- function(x) {
+  # Her bir istatistiği hesapla
+  stats <- list(
+    mean = mean(x, na.rm = TRUE),  # NA'ları göz ardı et
+    median = median(x, na.rm = TRUE),
+    variance = var(x, na.rm = TRUE),
+    iqr = IQR(x, na.rm = TRUE),
+    min = min(x, na.rm = TRUE),
+    max = max(x, na.rm = TRUE)
+  )
+  
+  return(stats)
+}
+# mtcars veri setini al
+data(mtcars)
+
+# Sayısal sütunlar üzerinde döngü
+for (col_name in colnames(mtcars)) {
+  # Her bir sütunu al
+  column_data <- mtcars[[col_name]]
+  
+  # compute_stats fonksiyonunu uygula
+  stats <- compute_stats(column_data)
+  
+  # Sonuçları yazdır
+  cat("\n", col_name, ":\n")
+  print(stats)
+}
+
+# sapply ile çözüm
+sapply(mtcars, compute_stats)
+
+# apply ile çözüm (margin=2, her bir sütun için)
+apply(mtcars, 2, compute_stats)
+# dslabs paketini yükle
+install.packages("dslabs")
+library(dslabs)
+
+# na_example veri setini yükle
+data("na_example")
+
+# Veri setini görüntüle
+head(na_example)
+# na_example_median'in türünü kontrol et
+class(na_example_median)
+
+# Veri setinin boyutlarını kontrol et
+dim(na_example_median)
+# Eğer veri vektörse, veri çerçevesine dönüştür
+na_example_median <- as.data.frame(na_example_median)
+# Eksik (NA) değerlerin bulunduğu hücrelerin konumlarını görmek
+which(is.na(na_example), arr.ind = TRUE)
+# Eksik (NA) verilerin toplam sayısı
+sum(is.na(na_example))
+# Tüm NA değerlerinin indekslerini listeleme
+which(is.na(na_example), arr.ind = TRUE)
+# Eksik verilerle ortalama ve standart sapma hesaplama
+mean_na_example <- mean(na_example, na.rm = TRUE)
+sd_na_example <- sd(na_example, na.rm = TRUE)
+
+mean_na_example
+sd_na_example
+na_example_median <- na_example
+na_example_median[is.na(na_example_median)] <- apply(na_example_median,2, function(x) median(x, na.rm = TRUE))[col(na_example_median)[is.na(na_example_median)]]
+set.seed(42)  # Rastgelelik için sabit başlangıç
+na_example_random <- na_example
+na_example_random[is.na(na_example_random)] <- sample(na_example_random[!is.na(na_example_random)], sum(is.na(na_example_random)), replace = TRUE)
+na_example_median <- as.data.frame(na_example_median)
+# Medyanla doldurulmuş verinin istatistikleri
+mean_median <- mean(na_example_median, na.rm = TRUE)
+sd_median <- sd(na_example_median, na.rm = TRUE)
+
+# Rastgele değerle doldurulmuş verinin istatistikleri
+mean_random <- mean(na_example_random, na.rm = TRUE)
+sd_random <- sd(na_example_random, na.rm = TRUE)
+
+# Sonuçları karşılaştır
+mean_na_example
+sd_na_example
+mean_median
+sd_median
+mean_random
+sd_random
+```
+
+Medyan ile doldurma genellikle daha güvenilirdir çünkü medyan aşırı uç değerlerden daha az etkilenir. Ancak rastgele değer seçmek, veriye daha fazla çeşitlilik katabilir. Hangi yöntem daha uygun olduğunu açıklarken, veri setinin özelliklerine göre karar verilebilir.
+
+Part (B) için Al uygulamalarından yardım alındı. Prompt olarak her bir adım için gereken kodların yazılması ve bu kodların adım adım ne işe yaradığının açıklanması istendi.
