@@ -1,15 +1,94 @@
 ---
 title: "Assignment 1"
+output: html_document
+<style>
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 12pt;
+    line-height: 1.5;
+    color: black;
+    background-color: white;
+    text-align: justify;
+  }
+  h1 { 
+    color: black;
+    font-weight: bold;
+    text-align: left;
+  }
+  h2 {
+    color: black;
+    font-style: italic;
+    text-align: left;
+    }
+  h3 {
+    color: blue;
+    font-style: italic;
+    text-align: left;
+    }
+    
+  
+</style>
 ---
 
 # Assignment 1
 
 ```{r}
-1 + 1
 ```
 
-My first assignment has two parts.
+My first assignment has two parts:
 
-## (a)
+## Part (A) Select a video and provide a brief summary in your Quarto document.
 
-## (b)
+## Part (B) Explore Statistical Summaries with Custom Functions and Iteration Methods
+
+#Part (A)
+
+Here, I have chosen a video titled "Conversations on Data Science and Industrial Engineering - Cem Vardar and Erdi Daşdemir" to summarize. The video covers topics on the relationship between Industrial Engineering and Data Science. You can access the video from this link: <https://www.youtube.com/watch?v=Fi8-phj1X1A>
+
+**#Conversations on Data Science and Industrial Engineering - Cem Vardar and Erdi Daşdemir**\
+Cem Vardar completed his Master's degree in Industrial Engineering at METU and his PhD at Arizona State University. He worked as an industrial engineer for various firms in the USA for twenty years. Dr. Erdi Daşdemir, who currently works as an Assistant Professor at Hacettepe University, hosted him on his YouTube channel for a seminar series on data science and industrial engineering. In the seminar, Cem Vardar discussed the relationship between industrial engineering and data science. He first focused on the concept of an engineer, discussed who an industrial engineer is, and then elaborated on the relationship between industrial engineering and data science. He concluded the seminar by offering advice.
+
+**##What is Engineering?**
+
+Engineering is a multidisciplinary field and profession that applies scientific, mathematical, and practical knowledge to meet specific needs and solve practical problems. Engineers are individuals who apply science and mathematics to solve problems. Engineers are responsible for designing, building, developing, and maintaining systems, structures, devices, and processes across various industries and sectors.
+
+**##What is Industrial Engineering?**
+
+Industrial engineering focuses on problems in complex organizations or businesses. While most engineers deal with physical problems, industrial engineering problems are often more complex. Industrial engineers solve complex systems in businesses. Tools used include operations research, simulation, and supply chain management.\
+Typically, when dealing with complex systems, simple solutions are preferred over complex ones. Instead of redesigning a malfunctioning system from scratch to perfection, it might be more beneficial to improve the parts that are not working well in the existing system.
+
+**##Relationship Between Data Science and Industrial Engineering**
+
+The position of data scientist has become increasingly sought after in recent years. Data science is a tool used to solve problems, which makes it suitable for industrial engineers. Industrial engineers take a holistic approach and are capable of seeing the system as a whole.\
+They solve complex systems in businesses and use tools such as operations research, simulation, and supply chain management. As systems in businesses become more complex, the amount of data collected increases. The need for data scientists to summarize and make use of this data has contributed to the development of the field. Data science is very useful in solving decision-making problems using data. The engineering knowledge and mindset serve as valuable tools in this process.
+
+**##Essential Skills for Data Scientists**
+
+Data science skills can be divided into soft skills and technical skills:
+
+**###Soft Skills**
+
+-   Analytical Thinking (Basic arithmetic, probability and statistics, reading graphs, defining problems based on data, drawing conclusions)
+
+-   Problem-Solving Skills (Breaking problems into smaller, manageable parts, choosing the right level of detail for analysis)
+
+-   Public Speaking, Presentation Skills, Communication, and Foreign Language Proficiency
+
+**###Technical Skills**\
+Technical skills are abilities that become important as you specialize in your job.
+
+-   Fundamental Knowledge (Basic probability and statistics, programming)
+
+-   Data Collection and Processing Skills (Databases and SQL, data processing with Python Pandas, algorithmic data extraction, processing, and transformation via programming)
+
+-   Visualization (Tableau, Power BI, Python or R visualizations, Excel)
+
+-   Modeling (Statistical models, linear regression, logistic regression, random forests, machine learning, etc.)
+
+**##Book Recommendations:**
+
+-   **The Goal**, by Eliyahu M. Goldratt
+
+-   **Atomic Habits**, by James Clear
+
+-   **Fooled by Randomness**, by Nassim Nicholas Taleb
