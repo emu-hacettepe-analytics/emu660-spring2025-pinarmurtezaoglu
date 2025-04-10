@@ -1,33 +1,6 @@
 ---
 title: "Assignment 1"
 output: html_document
-<style>
-  body {
-    font-family: 'Times New Roman', serif;
-    font-size: 12pt;
-    line-height: 1.5;
-    color: black;
-    background-color: white;
-    text-align: justify;
-  }
-  h1 { 
-    color: black;
-    font-weight: bold;
-    text-align: left;
-  }
-  h2 {
-    color: black;
-    font-style: italic;
-    text-align: left;
-    }
-  h3 {
-    color: blue;
-    font-style: italic;
-    text-align: left;
-    }
-    
-  
-</style>
 ---
 
 # Assignment 1
@@ -40,10 +13,10 @@ My first assignment has two parts:
 
 #Part (A)
 
-Here, I have chosen a video titled "Conversations on Data Science and Industrial Engineering - Cem Vardar and Erdi Daşdemir" to summarize. The video covers topics on the relationship between Industrial Engineering and Data Science. You can access the video from this link: <https://www.youtube.com/watch?v=Fi8-phj1X1A>
+Here, I have chosen a video titled "Conversations on Data Science and Industrial Engineering - Cem Vardar and Erdi DaEdemir" to summarize. The video covers topics on the relationship between Industrial Engineering and Data Science. You can access the video from this link: <https://www.youtube.com/watch?v=Fi8-phj1X1A>
 
-**#Conversations on Data Science and Industrial Engineering - Cem Vardar and Erdi Daşdemir**\
-Cem Vardar completed his Master's degree in Industrial Engineering at METU and his PhD at Arizona State University. He worked as an industrial engineer for various firms in the USA for twenty years. Dr. Erdi Daşdemir, who currently works as an Assistant Professor at Hacettepe University, hosted him on his YouTube channel for a seminar series on data science and industrial engineering. In the seminar, Cem Vardar discussed the relationship between industrial engineering and data science. He first focused on the concept of an engineer, discussed who an industrial engineer is, and then elaborated on the relationship between industrial engineering and data science. He concluded the seminar by offering advice.
+**#Conversations on Data Science and Industrial Engineering - Cem Vardar and Erdi DaEdemir**\
+Cem Vardar completed his Master's degree in Industrial Engineering at METU and his PhD at Arizona State University. He worked as an industrial engineer for various firms in the USA for twenty years. Dr. Erdi DaEdemir, who currently works as an Assistant Professor at Hacettepe University, hosted him on his YouTube channel for a seminar series on data science and industrial engineering. In the seminar, Cem Vardar discussed the relationship between industrial engineering and data science. He first focused on the concept of an engineer, discussed who an industrial engineer is, and then elaborated on the relationship between industrial engineering and data science. He concluded the seminar by offering advice.
 
 **##What is Engineering?**
 
@@ -93,96 +66,96 @@ Technical skills are abilities that become important as you specialize in your j
 #Part (B)
 
 ```{r}
-# Özel özetleme fonksiyonu oluşturma
+# Czel C6zetleme fonksiyonu oluEturma
 compute_stats <- function(x) {
-  # Fonksiyon yalnızca sayısal (numeric) bir vektörü almalı
-  if (!is.numeric(x)) stop("Girdi sayısal olmalı")
+  # Fonksiyon yalnD1zca sayD1sal (numeric) bir vektC6rC< almalD1
+  if (!is.numeric(x)) stop("Girdi sayD1sal olmalD1")
   
-  # İstatistikleri içeren bir liste oluşturuyoruz
+  # D0statistikleri iC'eren bir liste oluEturuyoruz
   stats <- list(
     mean = mean(x, na.rm = TRUE),       # Ortalama
     median = median(x, na.rm = TRUE),  # Medyan
     variance = var(x, na.rm = TRUE),   # Varyans
-    IQR = IQR(x, na.rm = TRUE),        # Çeyrekler arası açıklık (IQR)
-    minimum = min(x, na.rm = TRUE),    # Minimum değer
-    maximum = max(x, na.rm = TRUE)     # Maksimum değer
+    IQR = IQR(x, na.rm = TRUE),        # Ceyrekler arasD1 aC'D1klD1k (IQR)
+    minimum = min(x, na.rm = TRUE),    # Minimum deDer
+    maximum = max(x, na.rm = TRUE)     # Maksimum deDer
   )
-  return(stats) # İstatistikleri döndürüyoruz
+  return(stats) # D0statistikleri dC6ndC<rC<yoruz
 }
 
-# Döngü kullanarak fonksiyonu uygulama
-data("mtcars") # mtcars veri setini yükleme
-cat("Döngü kullanarak:\n")
-for (col in colnames(mtcars)) { # mtcars veri setinin sütunlarında döngü
-  if (is.numeric(mtcars[[col]])) { # Sadece sayısal sütunlara uygulama
+# DC6ngC< kullanarak fonksiyonu uygulama
+data("mtcars") # mtcars veri setini yC<kleme
+cat("DC6ngC< kullanarak:\n")
+for (col in colnames(mtcars)) { # mtcars veri setinin sC<tunlarD1nda dC6ngC<
+  if (is.numeric(mtcars[[col]])) { # Sadece sayD1sal sC<tunlara uygulama
     stats <- compute_stats(mtcars[[col]])
-    cat(paste("Sütun için istatistikler:", col, "\n")) # Sütun adını yazdır
-    print(stats) # İstatistikleri yazdır
+    cat(paste("SC<tun iC'in istatistikler:", col, "\n")) # SC<tun adD1nD1 yazdD1r
+    print(stats) # D0statistikleri yazdD1r
   }
 }
 
-# sapply ile alternatif yaklaşım
+# sapply ile alternatif yaklaED1m
 cat("\nsapply kullanarak:\n")
 results_sapply <- sapply(mtcars, function(col) {
-  if (is.numeric(col)) compute_stats(col) else NULL # Sayısal sütunlar için uygula
+  if (is.numeric(col)) compute_stats(col) else NULL # SayD1sal sC<tunlar iC'in uygula
 })
 print(results_sapply)
 
-# apply ile alternatif yaklaşım
+# apply ile alternatif yaklaED1m
 cat("\napply kullanarak:\n")
 results_apply <- apply(mtcars, 2, function(col) {
   if (is.numeric(col)) compute_stats(as.numeric(col)) else NULL
 })
 print(results_apply)
 
-# "na_example" veri setini yükleme
+# "na_example" veri setini yC<kleme
 library(dslabs)
 data("na_example")
 
-# Eksik (NA) değerleri içeren veri setini görüntüleme
-cat("\n'na_example' veri seti içeriği:\n")
+# Eksik (NA) deDerleri iC'eren veri setini gC6rC<ntC<leme
+cat("\n'na_example' veri seti iC'eriDi:\n")
 print(na_example)
 
-# Toplam NA sayısı ve NA değerlerinin pozisyonları
-na_count <- sum(is.na(na_example)) # Toplam NA sayısı
-na_indices <- which(is.na(na_example)) # NA değerlerinin pozisyonları
-cat("\nToplam NA sayısı:", na_count, "\n")
-cat("NA değerlerinin pozisyonları:\n")
+# Toplam NA sayD1sD1 ve NA deDerlerinin pozisyonlarD1
+na_count <- sum(is.na(na_example)) # Toplam NA sayD1sD1
+na_indices <- which(is.na(na_example)) # NA deDerlerinin pozisyonlarD1
+cat("\nToplam NA sayD1sD1:", na_count, "\n")
+cat("NA deDerlerinin pozisyonlarD1:\n")
 print(na_indices)
 
-# NA'ları dikkate almayarak ortalama ve standart sapma hesaplama
+# NA'larD1 dikkate almayarak ortalama ve standart sapma hesaplama
 original_mean <- mean(na_example, na.rm = TRUE)
 original_sd <- sd(na_example, na.rm = TRUE)
-cat("\nOrijinal veri seti istatistikleri (NA'lar dahil değil):\n")
+cat("\nOrijinal veri seti istatistikleri (NA'lar dahil deDil):\n")
 cat("Ortalama:", original_mean, "Standart Sapma:", original_sd, "\n")
 
-# Eksik değerlerin işlenmesi
-# 1. Versiyon: NA değerlerini medyan ile doldurma
+# Eksik deDerlerin iElenmesi
+# 1. Versiyon: NA deDerlerini medyan ile doldurma
 median_value <- median(na_example, na.rm = TRUE)
 na_example_v1 <- ifelse(is.na(na_example), median_value, na_example)
 
-# 2. Versiyon: NA değerlerini rastgele bir değer ile doldurma
-non_na_values <- na_example[!is.na(na_example)] # Eksik olmayan değerler
+# 2. Versiyon: NA deDerlerini rastgele bir deDer ile doldurma
+non_na_values <- na_example[!is.na(na_example)] # Eksik olmayan deDerler
 na_example_v2 <- ifelse(is.na(na_example), sample(non_na_values, size = sum(is.na(na_example)), replace = TRUE), na_example)
 
-# İşlenmiş veri setleri için istatistikler
+# D0ElenmiE veri setleri iC'in istatistikler
 mean_v1 <- mean(na_example_v1)
 sd_v1 <- sd(na_example_v1)
 mean_v2 <- mean(na_example_v2)
 sd_v2 <- sd(na_example_v2)
 
-cat("\nİşlenmiş veri setleri istatistikleri:\n")
+cat("\nD0ElenmiE veri setleri istatistikleri:\n")
 cat("1. Versiyon - Ortalama:", mean_v1, "Standart Sapma:", sd_v1, "\n")
 cat("2. Versiyon - Ortalama:", mean_v2, "Standart Sapma:", sd_v2, "\n")
 
-# Sonuçların karşılaştırılması
-cat("\nİstatistiklerin karşılaştırılması:\n")
+# SonuC'larD1n karED1laEtD1rD1lmasD1
+cat("\nD0statistiklerin karED1laEtD1rD1lmasD1:\n")
 cat("Orijinal - Ortalama:", original_mean, "Standart Sapma:", original_sd, "\n")
 cat("1. Versiyon - Ortalama:", mean_v1, "Standart Sapma:", sd_v1, "\n")
 cat("2. Versiyon - Ortalama:", mean_v2, "Standart Sapma:", sd_v2, "\n")
-cat("\nAçıklama:\n1. Versiyon (medyan doldurma), genellikle uç değerlere karşı daha dayanıklıdır ve daha kararlıdır. Bu nedenle eksik verilerle başa çıkarken daha uygun olabilir.")
+cat("\nAC'D1klama:\n1. Versiyon (medyan doldurma), genellikle uC' deDerlere karED1 daha dayanD1klD1dD1r ve daha kararlD1dD1r. Bu nedenle eksik verilerle baEa C'D1karken daha uygun olabilir.")
 
 
 ```
 
-Part (B) için Al uygulamalarından yardım alındı. Prompt olarak her bir adım için gereken kodların yazılması ve bu kodların adım adım ne işe yaradığının açıklanması istendi.
+Part (B) iC'in Al uygulamalarD1ndan yardD1m alD1ndD1. Prompt olarak her bir adD1m iC'in gereken kodlarD1n yazD1lmasD1 ve bu kodlarD1n adD1m adD1m ne iEe yaradD1DD1nD1n aC'D1klanmasD1 istendi.
