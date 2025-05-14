@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -209,18 +243,247 @@ ul.task-list li input[type="checkbox"] {
 <p>İstatistiklerle Kadın-2024 veri kümesinden analiz için seçilen veriler şunlardır: • Cinsiyet ve İBBS 2. Düzeye göre temel işgücü göstergeleri • Eğitim durumuna göre yıllık ortalama brüt kazanç • Meslek grubuna göre yıllık ortalama brüt kazanç • Cinsiyete göre üst ve orta düzey yönetici pozisyonlarındaki bireylerin oranı • Cinsiyete göre 25-49 yaş grubunda olup hane halkında 3 yaşın altında çocuğu olan ve çocuğu olmayan kişilerin istihdam oranı • Cinsiyet ve eğitim durumuna göre işgücü durumu</p>
 <p>#3.İşgücüne Bakış #3.1. Bölgelere Göre İstihdam Oranı</p>
 <p>2023 yılında 15 ve daha yukarı yaştaki kadın nüfusun istihdam oranı %31,3, erkek nüfusun istihdam oranı ise %65,7 olmuştur. İBBS 2.Düzeye göre en yüksek kadın istihdam oranı, %38,9 ile TR61 (Antalya, Isparta, Burdur) bölgesinde, en düşük kadın istihdam oranı ise %19,8 ile TRC3 (Mardin, Batman, Şırnak, Siirt) bölgesinde gerçekleşmiştir. Kadın istihdamının en az olduğu beş bölgeye bakıldığında neredeyse tamamının Doğu ve Güneydoğu bölgelerindeki illerden oluştuğu dikkat çekmektedir.</p>
-<p><code>aub # Gerekli paketler # install.packages("tidyr") # install.packages("readr") # install.packages("dplyr") # install.packages("readxl") # install.packages("ggplot2") library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  # Veriyi oku veri &lt;- read_excel("bolge_duzeyi.xlsx")  # Kadın istihdam oranına göre sıralama için sıralı bölge listesi oluştur sirali_bolgeler &lt;- veri %&gt;%   filter(cinsiyet == "Kadın") %&gt;%   arrange(desc(istihdam_orani)) %&gt;%   pull(bolge)  # Faktör olarak ayarla (sıralı grafik için) veri$bolge &lt;- factor(veri$bolge, levels = sirali_bolgeler)  # Türkiye ortalamaları ortalama_kadin &lt;- 31.3 ortalama_erkek &lt;- 65.7  # Grafik oluştur ggplot(veri, aes(x = istihdam_orani, y = bolge, fill = cinsiyet)) +   geom_bar(stat = "identity", position = "dodge") +   geom_vline(xintercept = ortalama_kadin, color = "green", linetype = "dashed", size = 1) +   geom_vline(xintercept = ortalama_erkek, color = "steelblue", linetype = "dashed", size = 1) +   labs(title = "Bölgelere Göre Cinsiyete Göre İstihdam Oranı",        x = "İstihdam Oranı (%)", y = "Bolge", fill = "Cinsiyet") +   theme_minimal() +   theme(axis.text.y = element_text(size = 7))}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli paketler</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("tidyr")</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("readr")</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("dplyr")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("readxl")</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("ggplot2")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Veriyi oku</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"bolge_duzeyi.xlsx"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Kadın istihdam oranına göre sıralama için sıralı bölge listesi oluştur</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>sirali_bolgeler <span class="ot">&lt;-</span> veri <span class="sc">%&gt;%</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cinsiyet <span class="sc">==</span> <span class="st">"Kadın"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(istihdam_orani)) <span class="sc">%&gt;%</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(bolge)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Faktör olarak ayarla (sıralı grafik için)</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>veri<span class="sc">$</span>bolge <span class="ot">&lt;-</span> <span class="fu">factor</span>(veri<span class="sc">$</span>bolge, <span class="at">levels =</span> sirali_bolgeler)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Türkiye ortalamaları</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>ortalama_kadin <span class="ot">&lt;-</span> <span class="fl">31.3</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>ortalama_erkek <span class="ot">&lt;-</span> <span class="fl">65.7</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik oluştur</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> istihdam_orani, <span class="at">y =</span> bolge, <span class="at">fill =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> ortalama_kadin, <span class="at">color =</span> <span class="st">"green"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> ortalama_erkek, <span class="at">color =</span> <span class="st">"steelblue"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Bölgelere Göre Cinsiyete Göre İstihdam Oranı"</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"İstihdam Oranı (%)"</span>, <span class="at">y =</span> <span class="st">"Bolge"</span>, <span class="at">fill =</span> <span class="st">"Cinsiyet"</span>) <span class="sc">+</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>#3.2. Eğitim Durumuna Göre Yıllık Kazanç Durumu</p>
 <p>2023 yılı verilerine göre kazanç düzeylerinin hem erkeklerde hem de kadınlarda eğitim durumu ile birlikte yükseldiği görülmüştür. Eğitim durumuna göre en yüksek yıllık ortalama brüt kazancı yükseköğretim eğitim düzeyine sahip olanlar elde etmiş olup, bu eğitim düzeyinde yıllık ortalama brüt kazanç erkeklerde 431 bin 364 TL, kadınlarda ise 354 bin 149 TL olmuştur. Tüm seviyelerde erkek ve kadın aynı eğitim düzeyinde olmasına rağmen erkeklerin yıllık ortalama brüt kazancının kadınlardan fazla olduğu görülmektedir.</p>
-<p><code>aub library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  veri &lt;- read_excel("yillik_kazanc.xlsx")  # Sütun adlarını ASCII karakterlerine dönüştür names(veri) &lt;- iconv(names(veri), from = "", to = "ASCII//TRANSLIT")  ggplot(veri, aes(x = reorder(egitim_duzeyi, yillik_ort_brut_kazanc),                   y = yillik_ort_brut_kazanc, fill = cinsiyet)) +   geom_bar(stat = "identity", position = "dodge") +   geom_text(aes(label = paste0(format(yillik_ort_brut_kazanc, big.mark = ".", decimal.mark = ","), ",00")),              position = position_dodge(width = 0.9), vjust = -0.3, size = 3) +    scale_y_continuous(labels = scales::comma_format(big.mark = ".", decimal.mark = ",")) +   labs(title = "Egitim Duzeyine Gore Yillik Ortalama Brut Kazanc",        x = "Egitim Duzeyi", y = "Yillik Kazanc (TL)", fill = "Cinsiyet") +   theme_minimal()}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"yillik_kazanc.xlsx"</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Sütun adlarını ASCII karakterlerine dönüştür</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(veri) <span class="ot">&lt;-</span> <span class="fu">iconv</span>(<span class="fu">names</span>(veri), <span class="at">from =</span> <span class="st">""</span>, <span class="at">to =</span> <span class="st">"ASCII//TRANSLIT"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(egitim_duzeyi, yillik_ort_brut_kazanc), </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">y =</span> yillik_ort_brut_kazanc, <span class="at">fill =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">paste0</span>(<span class="fu">format</span>(yillik_ort_brut_kazanc, <span class="at">big.mark =</span> <span class="st">"."</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>), <span class="st">",00"</span>)), </span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.3</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">comma_format</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>)) <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Egitim Duzeyine Gore Yillik Ortalama Brut Kazanc"</span>,</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Egitim Duzeyi"</span>, <span class="at">y =</span> <span class="st">"Yillik Kazanc (TL)"</span>, <span class="at">fill =</span> <span class="st">"Cinsiyet"</span>) <span class="sc">+</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>#3.3.Meslek Gruplarına Göre Kazanç Durumu</p>
 <p>2023 yılı verilerine göre, kadınlarda en yüksek yıllık ortalama brüt kazancı 530.663,00 TL ile yöneticiler meslek grubunda çalışanlar elde etmiştir. Yönetici pozisyonunda çalışan erkek ve kadınlar arasında yıllık ortalama kazançlarında farklılığın düşük olduğu dikkat çekmektedir. En düşük yıllık ortalama brüt kazanç ise 185.860,00 TL ile nitelikli tarım, ormancılık ve su ürünleri çalışanları grubunda gerçekleşmiştir. Yalnızca “Hizmet ve servis elemanları” meslek grubunda çalışan kadınlar aynı meslek grubunda çalışan erkeklere göre daha fazla yıllık ortalama kazanç elde etmiş, diğer tüm meslek gruplarında erkekler kadınlardan daha fazla yıllık ortalama kazanç sağlamıştır.</p>
-<p><code>aub library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr) library(scales) # Veriyi oku veri &lt;- read_excel("meslek_gruplarina_gore_kazanc.xlsx")  # Ortalama kazancı cinsiyet ve meslek bazında hesapla veri &lt;- veri %&gt;%   group_by(meslek, cinsiyet) %&gt;%   summarize(yillik_ort_kazanc = mean(yillik_ort_kazanc, na.rm = TRUE), .groups = "drop")  # Kadınlara göre meslek sıralaması sirali_meslekler &lt;- veri %&gt;%   filter(cinsiyet == "Kadın") %&gt;%   arrange(yillik_ort_kazanc) %&gt;%   pull(meslek)  # Sıralı faktör olarak ayarla veri$meslek &lt;- factor(veri$meslek, levels = sirali_meslekler)  # Grafik ggplot(veri, aes(x = meslek, y = yillik_ort_kazanc, fill = cinsiyet)) +   geom_bar(stat = "identity", position = "dodge") +   geom_text(aes(label = format(yillik_ort_kazanc, big.mark = ".", decimal.mark = ",", nsmall = 2)),             position = position_dodge(width = 0.9),              hjust = -0.1, size = 2.5) +  # ← etiketler çubuğun sağında   coord_flip() +   scale_fill_manual(values = c("Kadın" = "yellow", "Erkek" = "lightgreen")) +   scale_y_continuous(     breaks = c(0, 150000, 250000, 350000, 450000),     labels = label_number(big.mark = ".", decimal.mark = ",", accuracy = 1),     expand = expansion(mult = c(0, 0.15))  # ← boşluk bırak, çubukların sonunda etiketler için alan yarat   ) +   labs(title = "Kadın ve Erkeklerin Mesleklere Göre Yıllık Ortalama Kazançları",        x = "Meslek Grubu", y = "Yıllık Ortalama Kazanç (TL)", fill = "Cinsiyet") +   theme_minimal() +   theme(axis.text.y = element_text(margin = margin(r = 10)))}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'scales'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:readr':
+
+    col_factor</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Veriyi oku</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"meslek_gruplarina_gore_kazanc.xlsx"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ortalama kazancı cinsiyet ve meslek bazında hesapla</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> veri <span class="sc">%&gt;%</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(meslek, cinsiyet) <span class="sc">%&gt;%</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">yillik_ort_kazanc =</span> <span class="fu">mean</span>(yillik_ort_kazanc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Kadınlara göre meslek sıralaması</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>sirali_meslekler <span class="ot">&lt;-</span> veri <span class="sc">%&gt;%</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cinsiyet <span class="sc">==</span> <span class="st">"Kadın"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(yillik_ort_kazanc) <span class="sc">%&gt;%</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(meslek)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Sıralı faktör olarak ayarla</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>veri<span class="sc">$</span>meslek <span class="ot">&lt;-</span> <span class="fu">factor</span>(veri<span class="sc">$</span>meslek, <span class="at">levels =</span> sirali_meslekler)</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> meslek, <span class="at">y =</span> yillik_ort_kazanc, <span class="at">fill =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">format</span>(yillik_ort_kazanc, <span class="at">big.mark =</span> <span class="st">"."</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>, <span class="at">nsmall =</span> <span class="dv">2</span>)),</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.9</span>), </span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.1</span>, <span class="at">size =</span> <span class="fl">2.5</span>) <span class="sc">+</span>  <span class="co"># ← etiketler çubuğun sağında</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Kadın"</span> <span class="ot">=</span> <span class="st">"yellow"</span>, <span class="st">"Erkek"</span> <span class="ot">=</span> <span class="st">"lightgreen"</span>)) <span class="sc">+</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">150000</span>, <span class="dv">250000</span>, <span class="dv">350000</span>, <span class="dv">450000</span>),</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">big.mark =</span> <span class="st">"."</span>, <span class="at">decimal.mark =</span> <span class="st">","</span>, <span class="at">accuracy =</span> <span class="dv">1</span>),</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="at">mult =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.15</span>))  <span class="co"># ← boşluk bırak, çubukların sonunda etiketler için alan yarat</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Kadın ve Erkeklerin Mesleklere Göre Yıllık Ortalama Kazançları"</span>,</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Meslek Grubu"</span>, <span class="at">y =</span> <span class="st">"Yıllık Ortalama Kazanç (TL)"</span>, <span class="at">fill =</span> <span class="st">"Cinsiyet"</span>) <span class="sc">+</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">r =</span> <span class="dv">10</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>#3.4.Üst ve Orta Düzey Yönetici Pozisyonundaki Görünüm</p>
 <p>Üst ve orta düzey yönetici pozisyonundaki kadın oranı 2012 yılında %14.4 iken 2023 yılında %20.6 olmuştur. Bu oran erkeklerde 2012 yılında %85.6 iken 2023 yılında %79.4 olarak gerçekleşmiştir. 2012-2023 yıllarındaki orta ve üst düzey yönetici oranları incelendiğinde tüm yıllarda kadınların yönetici pozisyonunda çok az yer bulabildiği görülmektedir.</p>
-<p><code>aub library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  veri &lt;- read_excel("yonetici.xlsx") names(veri) &lt;- iconv(names(veri), from = "", to = "ASCII//TRANSLIT")  veri &lt;- veri %&gt;%   mutate(     cinsiyet = as.character(cinsiyet),     orta_ust_yonetici_orani = as.numeric(orta_ust_yonetici_orani)   ) %&gt;%   filter(cinsiyet %in% c("Kadın", "Erkek")) %&gt;%   mutate(cinsiyet = factor(cinsiyet, levels = c("Kadın", "Erkek")))  ggplot(veri, aes(x = as.factor(yil), y = orta_ust_yonetici_orani, color = cinsiyet, group = cinsiyet)) +   geom_line(size = 1) +   geom_point(size = 2) +   geom_text(     aes(label = sprintf("%.1f", orta_ust_yonetici_orani)),     vjust = -0.5,     size = 3,     show.legend = FALSE  # ← İşte hayat kurtaran satır   ) +   labs(title = "Yıllara Göre Orta ve Üst Düzey Yönetici Olma Oranı",        x = "Yıl",        y = "Orta ve Üst Düzey Yönetici Oranı (%)",        color = "Cinsiyet") +   scale_color_manual(values = c("Kadın" = "purple", "Erkek" = "orange")) +   theme_minimal()}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"yonetici.xlsx"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(veri) <span class="ot">&lt;-</span> <span class="fu">iconv</span>(<span class="fu">names</span>(veri), <span class="at">from =</span> <span class="st">""</span>, <span class="at">to =</span> <span class="st">"ASCII//TRANSLIT"</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> veri <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">cinsiyet =</span> <span class="fu">as.character</span>(cinsiyet),</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">orta_ust_yonetici_orani =</span> <span class="fu">as.numeric</span>(orta_ust_yonetici_orani)</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(cinsiyet <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Kadın"</span>, <span class="st">"Erkek"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cinsiyet =</span> <span class="fu">factor</span>(cinsiyet, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Kadın"</span>, <span class="st">"Erkek"</span>)))</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(yil), <span class="at">y =</span> orta_ust_yonetici_orani, <span class="at">color =</span> cinsiyet, <span class="at">group =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">sprintf</span>(<span class="st">"%.1f"</span>, orta_ust_yonetici_orani)),</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>,</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">show.legend =</span> <span class="cn">FALSE</span>  <span class="co"># ← İşte hayat kurtaran satır</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Yıllara Göre Orta ve Üst Düzey Yönetici Olma Oranı"</span>,</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Yıl"</span>,</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Orta ve Üst Düzey Yönetici Oranı (%)"</span>,</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Cinsiyet"</span>) <span class="sc">+</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Kadın"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"Erkek"</span> <span class="ot">=</span> <span class="st">"orange"</span>)) <span class="sc">+</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>#3.5.Çocuğa Bağlı İstihdam Oranı 2023 yılında hanesinde 3 yaşın altında çocuğu olan 25-49 yaş grubundaki kadınların istihdam oranının %27,1, erkeklerin istihdam oranının ise %90,6 olduğu görülmüştür. 2023 yılında çocuk sahibi olmayan kadınların istihdam oranı %58 iken, erkekler için bu oran %79.3’tür. 2014-2023 yılları için veriler incelendiğinde çocuk sahibi olmayan kadınların istihdam oranının, 3 yaş altı çocuk sahibi olan kadınlara kıyasla tüm yıllar için neredeyse iki katı olduğu görülmektedir. Bu durum erkeklerde ters etki yaratmaktadır. 3 yaş altı çocuk sahibi olan erkeklerin istihdam oranı, çocuk sahibi olmayanlara göre daha fazladır.</p>
-<p><code>aub library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  # Veriyi oku veri &lt;- read_excel("cocuga_bagli_istihdam_orani.xlsx")  # Veriyi düzenle veri_long &lt;- veri %&gt;%   pivot_longer(cols = c("3yasalti_cocuk_olan_istihdam_orani", "cocuk_olmayan_istihdam_orani"),                 names_to = "cocuk_durumu",                 values_to = "istihdam_orani") %&gt;%   mutate(cocuk_durumu = recode(cocuk_durumu,                                 "3yasalti_cocuk_olan_istihdam_orani" = "3 Yaş Altı Çocuk Sahibi",                                "cocuk_olmayan_istihdam_orani" = "Çocuk Sahibi Değil"))  # Grafik oluşturma ggplot(veri_long, aes(x = as.factor(yil), y = istihdam_orani, color = cinsiyet,                        linetype = cocuk_durumu, group = interaction(cinsiyet, cocuk_durumu))) +   geom_line(size = 1.2) +   geom_point(size = 3) +   geom_text(aes(label = round(istihdam_orani, 1)), vjust = -0.9, size = 3,show.legend = FALSE) +   labs(title = "Yıllara Göre 3 Yaş Altı Çocuk Sahibi Olma Durumuna Göre İstihdam Oranı",        x = "Yıl",        y = "İstihdam Oranı (%)",        color = "Cinsiyet",        linetype = "Çocuk Durumu") +   scale_x_discrete(breaks = unique(veri_long$yil)) +   scale_y_continuous(breaks = seq(0, 90, by = 10)) +   theme_minimal() +   scale_color_manual(values = c("royalblue", "hotpink"))}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Veriyi oku</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"cocuga_bagli_istihdam_orani.xlsx"</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Veriyi düzenle</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>veri_long <span class="ot">&lt;-</span> veri <span class="sc">%&gt;%</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">"3yasalti_cocuk_olan_istihdam_orani"</span>, <span class="st">"cocuk_olmayan_istihdam_orani"</span>), </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"cocuk_durumu"</span>, </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"istihdam_orani"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">cocuk_durumu =</span> <span class="fu">recode</span>(cocuk_durumu, </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"3yasalti_cocuk_olan_istihdam_orani"</span> <span class="ot">=</span> <span class="st">"3 Yaş Altı Çocuk Sahibi"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                               <span class="st">"cocuk_olmayan_istihdam_orani"</span> <span class="ot">=</span> <span class="st">"Çocuk Sahibi Değil"</span>))</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik oluşturma</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(veri_long, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.factor</span>(yil), <span class="at">y =</span> istihdam_orani, <span class="at">color =</span> cinsiyet, </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>                      <span class="at">linetype =</span> cocuk_durumu, <span class="at">group =</span> <span class="fu">interaction</span>(cinsiyet, cocuk_durumu))) <span class="sc">+</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">round</span>(istihdam_orani, <span class="dv">1</span>)), <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.9</span>, <span class="at">size =</span> <span class="dv">3</span>,<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Yıllara Göre 3 Yaş Altı Çocuk Sahibi Olma Durumuna Göre İstihdam Oranı"</span>,</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Yıl"</span>,</span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"İstihdam Oranı (%)"</span>,</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Cinsiyet"</span>,</span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">linetype =</span> <span class="st">"Çocuk Durumu"</span>) <span class="sc">+</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">breaks =</span> <span class="fu">unique</span>(veri_long<span class="sc">$</span>yil)) <span class="sc">+</span></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">90</span>, <span class="at">by =</span> <span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"royalblue"</span>, <span class="st">"hotpink"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="analiz" class="level1">
@@ -255,7 +518,168 @@ ul.task-list li input[type="checkbox"] {
 <section id="işgücüne-katılım-oranı-modeli" class="level1">
 <h1>4.2.3. İşgücüne Katılım Oranı Modeli</h1>
 <p>Bu modelde bağımlı değişken olarak işgücüne katılım oranı kullanılmış ve diğer modellerde olduğu gibi eğitim düzeyi ile cinsiyet arasındaki etkileşim de modele dahil edilmiştir: İstihdam Oranı = β0 + β1 × Eğitim Düzeyi + β2 × Cinsiyet + β3 × (Eğitim Düzeyi × Cinsiyet) + ϵ</p>
-<p><code>aub # Excel dosyasını oku veri &lt;- read_excel("Isgucu_verisi.xlsx")  # Değişken adlarını gör names(veri)  # Eğitim düzeyi sırasını oluştur veri &lt;- veri %&gt;%   mutate(egitim_sira = case_when(     egitim_duzeyi == "Okuryazar değil" ~ 1,     egitim_duzeyi == "Lise altı" ~ 2,     egitim_duzeyi == "Lise" ~ 3,     egitim_duzeyi == "Mesleki veya Teknik Lisesi" ~ 4,     egitim_duzeyi == "Yükseköğretim" ~ 5,     TRUE ~ NA_real_   ))  # Cinsiyeti faktör olarak tanımla veri$cinsiyet &lt;- factor(veri$cinsiyet)  #  1. İstihdam Oranı Modeli model_istihdam &lt;- lm(istihdam_orani ~ egitim_sira * cinsiyet, data = veri) summary(model_istihdam)  #  2. İşsizlik Oranı Modeli model_issizlik &lt;- lm(issizlik_orani ~ egitim_sira * cinsiyet, data = veri) summary(model_issizlik)  #  3. İşgücüne Katılım Modeli #model_katilim &lt;- lm(isgucune_katilma_orani ~ egitim_sira * cinsiyet, data = veri) #summary(model_katilim)   # install.packages(c("ggplot2", "ggpmisc", "patchwork")) library(ggplot2) library(ggpmisc) library(patchwork)  # Renk paleti ve tema my_colors &lt;- c("Kadın" = "darkred", "Erkek" = "steelblue") my_theme &lt;- theme_minimal(base_size = 12) my_formula &lt;- y ~ x  # 1. İstihdam Oranı g1 &lt;- ggplot(veri, aes(x = egitim_sira, y = istihdam_orani, color = cinsiyet)) +   geom_point(size = 3) +   geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +   scale_color_manual(values = my_colors) +   scale_x_continuous(     breaks = 1:5,     labels = c("Okuryazar değil", "Lise altı", "Lise", "Mesleki", "Yükseköğretim")   ) +   labs(title = "Egitim Duzeyine Gore Istihdam Orani",        x = "Egitim Duzeyi", y = "Istihdam Orani (%)", color = "Cinsiyet") +   my_theme  # 2. İşsizlik Oranı g2 &lt;- ggplot(veri, aes(x = egitim_sira, y = issizlik_orani, color = cinsiyet)) +   geom_point(size = 3) +   geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +   scale_color_manual(values = my_colors) +   scale_x_continuous(     breaks = 1:5,     labels = c("Okuryazar değil", "Lise altı", "Lise", "Mesleki", "Yükseköğretim")   ) +   labs(title = "Egitim Duzeyine Gore Issizlik Orani",                     x = "Egitim Duzeyi", y = "Issizlik orani (%)", color = "Cinsiyet") +   my_theme  # 3. Katılım Oranı #g3 &lt;- ggplot(veri, aes(x = egitim_sira, y = isgucune_katilma_orani, color = cinsiyet)) +   #geom_point(size = 3) +   #geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +   #scale_color_manual(values = my_colors) +   #scale_x_continuous(    # breaks = 1:5,     #labels = c("Okuryazar değil", "Lise altı", "Lise", "Mesleki", "Yükseköğretim")   #) +   #labs(title = "Egitim Duzeyine Gore İsgucune Katilim Orani",       # x = "Egitim Duzeyi", y = "Katilim Orani (%)", color = "Cinsiyet") +   #my_theme  # 3 grafiği üst üste tek sayfada göster g1 / g2 + plot_layout(ncol = 1)}</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Excel dosyasını oku</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"Isgucu_verisi.xlsx"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Değişken adlarını gör</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(veri)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "yil"            "cinsiyet"       "egitim_duzeyi"  "istihdam_orani"
+[5] "issizlik_orani"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eğitim düzeyi sırasını oluştur</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>veri <span class="ot">&lt;-</span> veri <span class="sc">%&gt;%</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">egitim_sira =</span> <span class="fu">case_when</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    egitim_duzeyi <span class="sc">==</span> <span class="st">"Okuryazar değil"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    egitim_duzeyi <span class="sc">==</span> <span class="st">"Lise altı"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    egitim_duzeyi <span class="sc">==</span> <span class="st">"Lise"</span> <span class="sc">~</span> <span class="dv">3</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    egitim_duzeyi <span class="sc">==</span> <span class="st">"Mesleki veya Teknik Lisesi"</span> <span class="sc">~</span> <span class="dv">4</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    egitim_duzeyi <span class="sc">==</span> <span class="st">"Yükseköğretim"</span> <span class="sc">~</span> <span class="dv">5</span>,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_real_</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Cinsiyeti faktör olarak tanımla</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>veri<span class="sc">$</span>cinsiyet <span class="ot">&lt;-</span> <span class="fu">factor</span>(veri<span class="sc">$</span>cinsiyet)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  1. İstihdam Oranı Modeli</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>model_istihdam <span class="ot">&lt;-</span> <span class="fu">lm</span>(istihdam_orani <span class="sc">~</span> egitim_sira <span class="sc">*</span> cinsiyet, <span class="at">data =</span> veri)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_istihdam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = istihdam_orani ~ egitim_sira * cinsiyet, data = veri)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-12.070  -5.609   1.390   4.040  11.110 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                 24.650      5.255   4.691 0.000246 ***
+egitim_sira                 12.120      1.584   7.649 9.87e-07 ***
+cinsiyetKadın              -22.865      7.432  -3.077 0.007225 ** 
+egitim_sira:cinsiyetKadın   -1.895      2.241  -0.846 0.410201    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.086 on 16 degrees of freedom
+Multiple R-squared:  0.9189,    Adjusted R-squared:  0.9037 
+F-statistic: 60.44 on 3 and 16 DF,  p-value: 6.01e-09</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  2. İşsizlik Oranı Modeli</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>model_issizlik <span class="ot">&lt;-</span> <span class="fu">lm</span>(issizlik_orani <span class="sc">~</span> egitim_sira <span class="sc">*</span> cinsiyet, <span class="at">data =</span> veri)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model_issizlik)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = issizlik_orani ~ egitim_sira * cinsiyet, data = veri)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-5.230 -1.066 -0.230  1.272  6.080 
+
+Coefficients:
+                          Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                10.7150     2.3057   4.647 0.000268 ***
+egitim_sira                -0.6350     0.6952  -0.913 0.374593    
+cinsiyetKadın              -7.0100     3.2608  -2.150 0.047213 *  
+egitim_sira:cinsiyetKadın   3.7400     0.9832   3.804 0.001559 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 3.109 on 16 degrees of freedom
+Multiple R-squared:  0.6518,    Adjusted R-squared:  0.5865 
+F-statistic: 9.983 on 3 and 16 DF,  p-value: 0.0005993</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#  3. İşgücüne Katılım Modeli</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co">#model_katilim &lt;- lm(isgucune_katilma_orani ~ egitim_sira * cinsiyet, data = veri)</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(model_katilim)</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("ggplot2", "ggpmisc", "patchwork"))</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggpmisc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Zorunlu paket yükleniyor: ggpp</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 methods overwritten by 'ggpp':
+  method                  from   
+  heightDetails.titleGrob ggplot2
+  widthDetails.titleGrob  ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ggpp'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    annotate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Renk paleti ve tema</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>my_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Kadın"</span> <span class="ot">=</span> <span class="st">"darkred"</span>, <span class="st">"Erkek"</span> <span class="ot">=</span> <span class="st">"steelblue"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>my_theme <span class="ot">&lt;-</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>my_formula <span class="ot">&lt;-</span> y <span class="sc">~</span> x</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. İstihdam Oranı</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> egitim_sira, <span class="at">y =</span> istihdam_orani, <span class="at">color =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> my_colors) <span class="sc">+</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Okuryazar değil"</span>, <span class="st">"Lise altı"</span>, <span class="st">"Lise"</span>, <span class="st">"Mesleki"</span>, <span class="st">"Yükseköğretim"</span>)</span>
+<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-17"><a href="#cb25-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Egitim Duzeyine Gore Istihdam Orani"</span>,</span>
+<span id="cb25-18"><a href="#cb25-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Egitim Duzeyi"</span>, <span class="at">y =</span> <span class="st">"Istihdam Orani (%)"</span>, <span class="at">color =</span> <span class="st">"Cinsiyet"</span>) <span class="sc">+</span></span>
+<span id="cb25-19"><a href="#cb25-19" aria-hidden="true" tabindex="-1"></a>  my_theme</span>
+<span id="cb25-20"><a href="#cb25-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-21"><a href="#cb25-21" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. İşsizlik Oranı</span></span>
+<span id="cb25-22"><a href="#cb25-22" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> egitim_sira, <span class="at">y =</span> issizlik_orani, <span class="at">color =</span> cinsiyet)) <span class="sc">+</span></span>
+<span id="cb25-23"><a href="#cb25-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb25-24"><a href="#cb25-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb25-25"><a href="#cb25-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> my_colors) <span class="sc">+</span></span>
+<span id="cb25-26"><a href="#cb25-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb25-27"><a href="#cb25-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb25-28"><a href="#cb25-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Okuryazar değil"</span>, <span class="st">"Lise altı"</span>, <span class="st">"Lise"</span>, <span class="st">"Mesleki"</span>, <span class="st">"Yükseköğretim"</span>)</span>
+<span id="cb25-29"><a href="#cb25-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb25-30"><a href="#cb25-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Egitim Duzeyine Gore Issizlik Orani"</span>,</span>
+<span id="cb25-31"><a href="#cb25-31" aria-hidden="true" tabindex="-1"></a>                    <span class="at">x =</span> <span class="st">"Egitim Duzeyi"</span>, <span class="at">y =</span> <span class="st">"Issizlik orani (%)"</span>, <span class="at">color =</span> <span class="st">"Cinsiyet"</span>) <span class="sc">+</span></span>
+<span id="cb25-32"><a href="#cb25-32" aria-hidden="true" tabindex="-1"></a>  my_theme</span>
+<span id="cb25-33"><a href="#cb25-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-34"><a href="#cb25-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Katılım Oranı</span></span>
+<span id="cb25-35"><a href="#cb25-35" aria-hidden="true" tabindex="-1"></a><span class="co">#g3 &lt;- ggplot(veri, aes(x = egitim_sira, y = isgucune_katilma_orani, color = cinsiyet)) +</span></span>
+<span id="cb25-36"><a href="#cb25-36" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_point(size = 3) +</span></span>
+<span id="cb25-37"><a href="#cb25-37" aria-hidden="true" tabindex="-1"></a>  <span class="co">#geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +</span></span>
+<span id="cb25-38"><a href="#cb25-38" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_color_manual(values = my_colors) +</span></span>
+<span id="cb25-39"><a href="#cb25-39" aria-hidden="true" tabindex="-1"></a>  <span class="co">#scale_x_continuous(</span></span>
+<span id="cb25-40"><a href="#cb25-40" aria-hidden="true" tabindex="-1"></a>   <span class="co"># breaks = 1:5,</span></span>
+<span id="cb25-41"><a href="#cb25-41" aria-hidden="true" tabindex="-1"></a>    <span class="co">#labels = c("Okuryazar değil", "Lise altı", "Lise", "Mesleki", "Yükseköğretim")</span></span>
+<span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">#) +</span></span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>  <span class="co">#labs(title = "Egitim Duzeyine Gore İsgucune Katilim Orani",</span></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>      <span class="co"># x = "Egitim Duzeyi", y = "Katilim Orani (%)", color = "Cinsiyet") +</span></span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">#my_theme</span></span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 grafiği üst üste tek sayfada göster</span></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>g1 <span class="sc">/</span> g2 <span class="sc">+</span> <span class="fu">plot_layout</span>(<span class="at">ncol =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="project_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <section id="sonuçlar" class="level2">
 <h2 class="anchored" data-anchor-id="sonuçlar">5. Sonuçlar</h2>
 <p>Veri görselleştirmesi için eğitim düzeyine göre istihdam oranı, işsizlik oranı ve işgücüne katılım oranı grafiklerle sunulmuştur. Grafiklerde:</p>
