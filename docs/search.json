@@ -18,5 +18,81 @@
     "crumbs": [
       "Assignment 1"
     ]
+  },
+  {
+    "objectID": "project.html",
+    "href": "project.html",
+    "title": "Project X",
+    "section": "",
+    "text": "Pınar MÜRTEZAOĞLU / Gamze KAZEL BOZKURT\nProje sayfamıza hoş geldiniz. Proje faaliyetlerimizden haberdar olmak için bu alanı takipte kalın."
+  },
+  {
+    "objectID": "project.html#data-source",
+    "href": "project.html#data-source",
+    "title": "Project X",
+    "section": "2.1 Data Source",
+    "text": "2.1 Data Source\nBu çalışmada kullanılan veriler, Türkiye İstatistik Kurumu (TÜİK) veri tabanından elde edilmiştir. Veriler, TÜİK’in çevrimiçi veri portalından .xlsx formatında indirilmiş ve analizde kullanılacak şekilde düzenlenmiştir."
+  },
+  {
+    "objectID": "project.html#general-information-about-data",
+    "href": "project.html#general-information-about-data",
+    "title": "Project X",
+    "section": "2.2 General Information About Data",
+    "text": "2.2 General Information About Data\nÇalışmada; kadınların eğitim düzeyi, işgücüne katılım oranı, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır."
+  },
+  {
+    "objectID": "project.html#reason-of-choice",
+    "href": "project.html#reason-of-choice",
+    "title": "Project X",
+    "section": "2.3 Reason of Choice",
+    "text": "2.3 Reason of Choice\nBu çalışmada kullanılan veriler, kamuya açık ve ücretsiz olarak sunulan TÜİK veri tabanından elde edilmiştir. TÜİK, uluslararası standartlara uygunluğu ve ulusal düzeyde temsili veri sağlayabilme kapasitesi nedeniyle tercih edilmiştir."
+  },
+  {
+    "objectID": "project.html#preprocessing",
+    "href": "project.html#preprocessing",
+    "title": "Project X",
+    "section": "2.4 Preprocessing",
+    "text": "2.4 Preprocessing\nİstatistiklerle Kadın-2024 veri kümesinden analiz için seçilen veriler şunlardır: • Cinsiyet ve İBBS 2. Düzeye göre temel işgücü göstergeleri • Eğitim durumuna göre yıllık ortalama brüt kazanç • Meslek grubuna göre yıllık ortalama brüt kazanç • Cinsiyete göre üst ve orta düzey yönetici pozisyonlarındaki bireylerin oranı • Cinsiyete göre 25-49 yaş grubunda olup hane halkında 3 yaşın altında çocuğu olan ve çocuğu olmayan kişilerin istihdam oranı • Cinsiyet ve eğitim durumuna göre işgücü durumu\n#3.İşgücüne Bakış #3.1. Bölgelere Göre İstihdam Oranı\n2023 yılında 15 ve daha yukarı yaştaki kadın nüfusun istihdam oranı %31,3, erkek nüfusun istihdam oranı ise %65,7 olmuştur. İBBS 2.Düzeye göre en yüksek kadın istihdam oranı, %38,9 ile TR61 (Antalya, Isparta, Burdur) bölgesinde, en düşük kadın istihdam oranı ise %19,8 ile TRC3 (Mardin, Batman, Şırnak, Siirt) bölgesinde gerçekleşmiştir. Kadın istihdamının en az olduğu beş bölgeye bakıldığında neredeyse tamamının Doğu ve Güneydoğu bölgelerindeki illerden oluştuğu dikkat çekmektedir.\nnki # Gerekli paketler # install.packages(\"tidyr\") # install.packages(\"readr\") # install.packages(\"dplyr\") # install.packages(\"readxl\") # install.packages(\"ggplot2\") library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  # Veriyi oku veri &lt;- read_excel(\"bolge_duzeyi.xlsx\")  # Kadın istihdam oranına göre sıralama için sıralı bölge listesi oluştur sirali_bolgeler &lt;- veri %&gt;%   filter(cinsiyet == \"Kadın\") %&gt;%   arrange(desc(istihdam_orani)) %&gt;%   pull(bolge)  # Faktör olarak ayarla (sıralı grafik için) veri$bolge &lt;- factor(veri$bolge, levels = sirali_bolgeler)  # Türkiye ortalamaları ortalama_kadin &lt;- 31.3 ortalama_erkek &lt;- 65.7  # Grafik oluştur ggplot(veri, aes(x = istihdam_orani, y = bolge, fill = cinsiyet)) +   geom_bar(stat = \"identity\", position = \"dodge\") +   geom_vline(xintercept = ortalama_kadin, color = \"green\", linetype = \"dashed\", size = 1) +   geom_vline(xintercept = ortalama_erkek, color = \"steelblue\", linetype = \"dashed\", size = 1) +   labs(title = \"Bölgelere Göre Cinsiyete Göre İstihdam Oranı\",        x = \"İstihdam Oranı (%)\", y = \"Bolge\", fill = \"Cinsiyet\") +   theme_minimal() +   theme(axis.text.y = element_text(size = 7))}\n#3.2. Eğitim Durumuna Göre Yıllık Kazanç Durumu\n2023 yılı verilerine göre kazanç düzeylerinin hem erkeklerde hem de kadınlarda eğitim durumu ile birlikte yükseldiği görülmüştür. Eğitim durumuna göre en yüksek yıllık ortalama brüt kazancı yükseköğretim eğitim düzeyine sahip olanlar elde etmiş olup, bu eğitim düzeyinde yıllık ortalama brüt kazanç erkeklerde 431 bin 364 TL, kadınlarda ise 354 bin 149 TL olmuştur. Tüm seviyelerde erkek ve kadın aynı eğitim düzeyinde olmasına rağmen erkeklerin yıllık ortalama brüt kazancının kadınlardan fazla olduğu görülmektedir.\nnki library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  veri &lt;- read_excel(\"yillik_kazanc.xlsx\")  # Sütun adlarını ASCII karakterlerine dönüştür names(veri) &lt;- iconv(names(veri), from = \"\", to = \"ASCII//TRANSLIT\")  ggplot(veri, aes(x = reorder(egitim_duzeyi, yillik_ort_brut_kazanc),                   y = yillik_ort_brut_kazanc, fill = cinsiyet)) +   geom_bar(stat = \"identity\", position = \"dodge\") +   geom_text(aes(label = paste0(format(yillik_ort_brut_kazanc, big.mark = \".\", decimal.mark = \",\"), \",00\")),              position = position_dodge(width = 0.9), vjust = -0.3, size = 3) +    scale_y_continuous(labels = scales::comma_format(big.mark = \".\", decimal.mark = \",\")) +   labs(title = \"Egitim Duzeyine Gore Yillik Ortalama Brut Kazanc\",        x = \"Egitim Duzeyi\", y = \"Yillik Kazanc (TL)\", fill = \"Cinsiyet\") +   theme_minimal()}\n#3.3.Meslek Gruplarına Göre Kazanç Durumu\n2023 yılı verilerine göre, kadınlarda en yüksek yıllık ortalama brüt kazancı 530.663,00 TL ile yöneticiler meslek grubunda çalışanlar elde etmiştir. Yönetici pozisyonunda çalışan erkek ve kadınlar arasında yıllık ortalama kazançlarında farklılığın düşük olduğu dikkat çekmektedir. En düşük yıllık ortalama brüt kazanç ise 185.860,00 TL ile nitelikli tarım, ormancılık ve su ürünleri çalışanları grubunda gerçekleşmiştir. Yalnızca “Hizmet ve servis elemanları” meslek grubunda çalışan kadınlar aynı meslek grubunda çalışan erkeklere göre daha fazla yıllık ortalama kazanç elde etmiş, diğer tüm meslek gruplarında erkekler kadınlardan daha fazla yıllık ortalama kazanç sağlamıştır.\nnki library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr) library(scales) # Veriyi oku veri &lt;- read_excel(\"meslek_gruplarina_gore_kazanc.xlsx\")  # Ortalama kazancı cinsiyet ve meslek bazında hesapla veri &lt;- veri %&gt;%   group_by(meslek, cinsiyet) %&gt;%   summarize(yillik_ort_kazanc = mean(yillik_ort_kazanc, na.rm = TRUE), .groups = \"drop\")  # Kadınlara göre meslek sıralaması sirali_meslekler &lt;- veri %&gt;%   filter(cinsiyet == \"Kadın\") %&gt;%   arrange(yillik_ort_kazanc) %&gt;%   pull(meslek)  # Sıralı faktör olarak ayarla veri$meslek &lt;- factor(veri$meslek, levels = sirali_meslekler)  # Grafik ggplot(veri, aes(x = meslek, y = yillik_ort_kazanc, fill = cinsiyet)) +   geom_bar(stat = \"identity\", position = \"dodge\") +   geom_text(aes(label = format(yillik_ort_kazanc, big.mark = \".\", decimal.mark = \",\", nsmall = 2)),             position = position_dodge(width = 0.9),              hjust = -0.1, size = 2.5) +  # ← etiketler çubuğun sağında   coord_flip() +   scale_fill_manual(values = c(\"Kadın\" = \"yellow\", \"Erkek\" = \"lightgreen\")) +   scale_y_continuous(     breaks = c(0, 150000, 250000, 350000, 450000),     labels = label_number(big.mark = \".\", decimal.mark = \",\", accuracy = 1),     expand = expansion(mult = c(0, 0.15))  # ← boşluk bırak, çubukların sonunda etiketler için alan yarat   ) +   labs(title = \"Kadın ve Erkeklerin Mesleklere Göre Yıllık Ortalama Kazançları\",        x = \"Meslek Grubu\", y = \"Yıllık Ortalama Kazanç (TL)\", fill = \"Cinsiyet\") +   theme_minimal() +   theme(axis.text.y = element_text(margin = margin(r = 10)))}\n#3.4.Üst ve Orta Düzey Yönetici Pozisyonundaki Görünüm\nÜst ve orta düzey yönetici pozisyonundaki kadın oranı 2012 yılında %14.4 iken 2023 yılında %20.6 olmuştur. Bu oran erkeklerde 2012 yılında %85.6 iken 2023 yılında %79.4 olarak gerçekleşmiştir. 2012-2023 yıllarındaki orta ve üst düzey yönetici oranları incelendiğinde tüm yıllarda kadınların yönetici pozisyonunda çok az yer bulabildiği görülmektedir.\nnki library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  veri &lt;- read_excel(\"yonetici.xlsx\") names(veri) &lt;- iconv(names(veri), from = \"\", to = \"ASCII//TRANSLIT\")  veri &lt;- veri %&gt;%   mutate(     cinsiyet = as.character(cinsiyet),     orta_ust_yonetici_orani = as.numeric(orta_ust_yonetici_orani)   ) %&gt;%   filter(cinsiyet %in% c(\"Kadın\", \"Erkek\")) %&gt;%   mutate(cinsiyet = factor(cinsiyet, levels = c(\"Kadın\", \"Erkek\")))  ggplot(veri, aes(x = as.factor(yil), y = orta_ust_yonetici_orani, color = cinsiyet, group = cinsiyet)) +   geom_line(size = 1) +   geom_point(size = 2) +   geom_text(     aes(label = sprintf(\"%.1f\", orta_ust_yonetici_orani)),     vjust = -0.5,     size = 3,     show.legend = FALSE  # ← İşte hayat kurtaran satır   ) +   labs(title = \"Yıllara Göre Orta ve Üst Düzey Yönetici Olma Oranı\",        x = \"Yıl\",        y = \"Orta ve Üst Düzey Yönetici Oranı (%)\",        color = \"Cinsiyet\") +   scale_color_manual(values = c(\"Kadın\" = \"purple\", \"Erkek\" = \"orange\")) +   theme_minimal()}\n#3.5.Çocuğa Bağlı İstihdam Oranı 2023 yılında hanesinde 3 yaşın altında çocuğu olan 25-49 yaş grubundaki kadınların istihdam oranının %27,1, erkeklerin istihdam oranının ise %90,6 olduğu görülmüştür. 2023 yılında çocuk sahibi olmayan kadınların istihdam oranı %58 iken, erkekler için bu oran %79.3’tür. 2014-2023 yılları için veriler incelendiğinde çocuk sahibi olmayan kadınların istihdam oranının, 3 yaş altı çocuk sahibi olan kadınlara kıyasla tüm yıllar için neredeyse iki katı olduğu görülmektedir. Bu durum erkeklerde ters etki yaratmaktadır. 3 yaş altı çocuk sahibi olan erkeklerin istihdam oranı, çocuk sahibi olmayanlara göre daha fazladır.\nnki library(readxl) library(ggplot2) library(tidyr) library(dplyr) library(readr)  # Veriyi oku veri &lt;- read_excel(\"cocuga_bagli_istihdam_orani.xlsx\")  # Veriyi düzenle veri_long &lt;- veri %&gt;%   pivot_longer(cols = c(\"3yasalti_cocuk_olan_istihdam_orani\", \"cocuk_olmayan_istihdam_orani\"),                 names_to = \"cocuk_durumu\",                 values_to = \"istihdam_orani\") %&gt;%   mutate(cocuk_durumu = recode(cocuk_durumu,                                 \"3yasalti_cocuk_olan_istihdam_orani\" = \"3 Yaş Altı Çocuk Sahibi\",                                \"cocuk_olmayan_istihdam_orani\" = \"Çocuk Sahibi Değil\"))  # Grafik oluşturma ggplot(veri_long, aes(x = as.factor(yil), y = istihdam_orani, color = cinsiyet,                        linetype = cocuk_durumu, group = interaction(cinsiyet, cocuk_durumu))) +   geom_line(size = 1.2) +   geom_point(size = 3) +   geom_text(aes(label = round(istihdam_orani, 1)), vjust = -0.9, size = 3,show.legend = FALSE) +   labs(title = \"Yıllara Göre 3 Yaş Altı Çocuk Sahibi Olma Durumuna Göre İstihdam Oranı\",        x = \"Yıl\",        y = \"İstihdam Oranı (%)\",        color = \"Cinsiyet\",        linetype = \"Çocuk Durumu\") +   scale_x_discrete(breaks = unique(veri_long$yil)) +   scale_y_continuous(breaks = seq(0, 90, by = 10)) +   theme_minimal() +   scale_color_manual(values = c(\"royalblue\", \"hotpink\"))}"
+  },
+  {
+    "objectID": "project.html#sonuçlar",
+    "href": "project.html#sonuçlar",
+    "title": "Project X",
+    "section": "5. Sonuçlar",
+    "text": "5. Sonuçlar\nVeri görselleştirmesi için eğitim düzeyine göre istihdam oranı, işsizlik oranı ve işgücüne katılım oranı grafiklerle sunulmuştur. Grafiklerde:\n-Yatay eksende eğitim düzeyi (1-5 arası kodlanmış) -Dikey eksende istihdam oranı, işsizlik oranı ve işgücüne katılım oranı -Renklerle cinsiyet farklılıkları (Kadın: Kırmızı, Erkek: Mavi)\nGrafiklerde kullanılan eğri çizgiler, doğrusal regresyon eğilimlerini göstermektedir. Her grafik, eğitim düzeyi arttıkça istihdam oranının yükseldiğini, işsizlik oranının düştüğünü ve işgücüne katılım oranının arttığını göstermektedir. Ancak, cinsiyetler arası farkın özellikle düşük eğitim seviyelerinde daha belirgin olduğu görülmüştür."
+  },
+  {
+    "objectID": "project.html#sonuçlar-ve-temel-bulgular",
+    "href": "project.html#sonuçlar-ve-temel-bulgular",
+    "title": "Project X",
+    "section": "6. Sonuçlar ve Temel Bulgular",
+    "text": "6. Sonuçlar ve Temel Bulgular\nBu analiz sonucunda, eğitim düzeyinin artmasının istihdam oranını pozitif yönde etkilediği, işsizlik oranını azalttığı ve işgücüne katılım oranını artırdığı tespit edilmiştir. Ayrıca, cinsiyet faktörünün özellikle düşük eğitim düzeylerinde belirgin farklılık oluşturduğu gözlemlenmiştir. Yükseköğretim seviyesinde kadın ve erkeklerin istihdam ve katılım oranları arasındaki fark azalmakta olup, bu durum eğitim düzeyinin cinsiyet eşitliği üzerinde pozitif bir etkisi olduğunu göstermektedir.\nBu bulgular, Türkiye’de işgücü piyasasında eğitim seviyesinin artırılmasının kadınların işgücüne katılımını ve istihdamını olumlu yönde etkileyeceğine dair önemli kanıtlar sunmaktadır. Bu nedenle, eğitim politikalarının kadınların istihdam edilebilirliğini artıracak şekilde planlanması gerekmektedir."
+  },
+  {
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "My Blog",
+    "section": "",
+    "text": "This page is under construction.\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "assignments/assignment-2.html",
+    "href": "assignments/assignment-2.html",
+    "title": "Assignment 2",
+    "section": "",
+    "text": "Assignment 2\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Assignment 2"
+    ]
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "My Assignments",
+    "section": "",
+    "text": "On this page, I showcase the assignment I conducted for the [Spring 2024-2025] EMU660 Decision Making with Analytics course.\nPlease use left menu to navigate through my assignments.\n\n\n\n Back to top",
+    "crumbs": [
+      "My Assignments"
+    ]
   }
 ]
