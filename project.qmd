@@ -21,7 +21,7 @@ editor:
     wrap: sentence
 ---
 
-![](C:/Users/pinar/Masaüstü/we%20can%20do%20it.png){width="150"}
+![](images/we%20can%20do%20it.gif){width="220"}
 
 **Pınar MÜRTEZAOĞLU / Gamze KAZEL BOZKURT**
 
