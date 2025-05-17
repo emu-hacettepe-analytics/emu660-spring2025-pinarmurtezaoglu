@@ -85,7 +85,7 @@ Kadın istihdamının en az olduğu beş bölgeye bakıldığında neredeyse tam
 Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla anlamlı şekilde daha yüksek olduğu görülmektedir.
 Bu durum, toplumsal cinsiyet temelli istihdam eşitsizliğinin bölgesel düzeyde yaygın bir sorun olduğunu ortaya koymaktadır.
 
-```{r}
+```{r setup, message=FALSE}
 # Gerekli paketler
 # install.packages("tidyr")
 # install.packages("readr")
@@ -98,7 +98,6 @@ library(tidyr)
 library(dplyr)
 library(readr)
 library(patchwork)
-
 
 ```
 
@@ -122,7 +121,6 @@ save(
   isgucu_verisi,
   file = "kadın_projesi_verisi.RData"
 )
-
 ```
 
 ```{r}
@@ -156,7 +154,6 @@ ggplot(veri, aes(x = istihdam_orani, y = bolge, fill = cinsiyet)) +
        x = "Istihdam Orani (%)", y = "Bolge", fill = "Cinsiyet") +
   theme_minimal() +
   theme(axis.text.y = element_text(size = 7))
-
 
 ```
 
@@ -196,7 +193,6 @@ ggplot(veri, aes(x = reorder(egitim_duzeyi, yillik_ort_brut_kazanc),
   labs(title = "Egitim Duzeyine Gore Yillik Ortalama Brut Kazanc",
        x = "Egitim Duzeyi", y = "Yillik Kazanc (TL)", fill = "Cinsiyet") +
   theme_minimal()
-
 ```
 
 ## 2.3. Meslek Gruplarına Göre Kazanç Durumu
@@ -208,12 +204,15 @@ En düşük yıllık ortalama brüt kazanç ise 185.860,00 TL ile nitelikli tar�
 Yalnızca “Hizmet ve servis elemanları” meslek grubunda çalışan kadınlar aynı meslek grubunda çalışan erkeklere göre daha fazla yıllık ortalama kazanç elde etmiş, diğer tüm meslek gruplarında erkekler kadınlardan daha fazla yıllık ortalama kazanç sağlamıştır.
 
 ```{r, message=FALSE}
+
 library(readxl)
 library(ggplot2)
 library(tidyr)
 library(dplyr)
 library(readr)
 library(scales)
+
+
 # Geçici bir ortam oluştur ve RData dosyasını yükle
 temp_env <- new.env()
 load("kadın_projesi_verisi.RData", envir = temp_env)
@@ -221,10 +220,11 @@ load("kadın_projesi_verisi.RData", envir = temp_env)
 # İlgili veri setini al
 veri <- temp_env$meslek_gruplarina_gore_kazanc
 
-# Ortalama kazancı cinsiyet ve meslek bazında hesapla
+
+# Veriyi meslek ve cinsiyete göre sıralayın
 veri <- veri %>%
   group_by(meslek, cinsiyet) %>%
-  summarize(yillik_ort_kazanc = mean(yillik_ort_kazanc, na.rm = TRUE), .groups = "drop")
+  summarize(yillik_ort_kazanc = mean(yillik_ort_kazanc, na.rm = TRUE, .groups = "drop"))
 
 # Kadınlara göre meslek sıralaması
 sirali_meslekler <- veri %>%
@@ -235,21 +235,21 @@ sirali_meslekler <- veri %>%
 # Sıralı faktör olarak ayarla
 veri$meslek <- factor(veri$meslek, levels = sirali_meslekler)
 
-# Grafik
+# Grafik oluşturma
 ggplot(veri, aes(x = meslek, y = yillik_ort_kazanc, fill = cinsiyet)) +
   geom_bar(stat = "identity", position = "dodge") +
   geom_text(aes(label = format(yillik_ort_kazanc, big.mark = ".", decimal.mark = ",", nsmall = 2)),
             position = position_dodge(width = 0.9), 
-            hjust = -0.1, size = 2.5) +
+            hjust = -0.1, size = 2.5) +  # ← etiketler çubuğun sağında
   coord_flip() +
   scale_fill_manual(values = c("Kadın" = "yellow", "Erkek" = "lightgreen")) +
   scale_y_continuous(
-    breaks = c(0, 150000, 250000, 350000, 450000),
+    breaks = c(0, 100000, 300000, 500000),
     labels = label_number(big.mark = ".", decimal.mark = ",", accuracy = 1),
-    expand = expansion(mult = c(0, 0.15))
+    expand = expansion(mult = c(0, 0.25))  # ← boşluk bırak, çubukların sonunda etiketler için alan yarat
   ) +
-  labs(title = "Kadın ve Erkeklerin Mesleklere Göre Yıllık Ortalama Kazançları",
-       x = "Meslek Grubu", y = "Yıllık Ortalama Kazanç (TL)", fill = "Cinsiyet") +
+  labs(title = "Ortalama Kazanc",
+       x = "Meslek Grubu", y = "Yillik Ortalama Kazanc (TL)", fill = "Cinsiyet") +
   theme_minimal() +
   theme(axis.text.y = element_text(margin = margin(r = 10)))
 ```
@@ -292,7 +292,7 @@ veri <- veri %>%
 
 # Grafik oluştur
 ggplot(veri, aes(x = as.factor(yil), y = orta_ust_yonetici_orani, color = cinsiyet, group = cinsiyet)) +
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   geom_point(size = 2) +
   geom_text(
     aes(label = sprintf("%.1f", orta_ust_yonetici_orani)),
@@ -349,7 +349,7 @@ veri_long <- veri %>%
 # Grafik oluştur
 ggplot(veri_long, aes(x = as.factor(yil), y = istihdam_orani, color = cinsiyet, 
                       linetype = cocuk_durumu, group = interaction(cinsiyet, cocuk_durumu))) +
-  geom_line(size = 1.2) +
+  geom_line(linewidth = 1.2) +
   geom_point(size = 3) +
   geom_text(aes(label = round(istihdam_orani, 1)), 
             vjust = -0.9, size = 3, show.legend = FALSE) +
@@ -362,7 +362,6 @@ ggplot(veri_long, aes(x = as.factor(yil), y = istihdam_orani, color = cinsiyet,
   scale_y_continuous(breaks = seq(0, 90, by = 10)) +
   theme_minimal() +
   scale_color_manual(values = c("royalblue", "hotpink"))
-
 ```
 
 ## 3. Analiz
@@ -391,7 +390,7 @@ Bu modelde işsizlik oranı bağımlı değişken olarak kullanılmış ve benze
 
 İşsizlik Oranı = β0 + β1 × Eğitim Düzeyi + β2 × Cinsiyet + β3 × (Eğitim Düzeyi × Cinsiyet) + ϵ
 
-```{r}
+```{r, message=FALSE}
 # Geçici ortam oluştur ve RData dosyasını yükle
 temp_env <- new.env()
 load("kadın_projesi_verisi.RData", envir = temp_env)
@@ -458,7 +457,6 @@ g2 <- ggplot(veri, aes(x = egitim_sira, y = issizlik_orani, color = cinsiyet)) +
 
 # İki grafiği birlikte göster
 g1 / g2 + plot_layout(ncol = 1)
-
 ```
 
 ## 4. Bulgular
