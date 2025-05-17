@@ -4897,7 +4897,7 @@ vertical-align: -.125em;
 <p>Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla anlamlı şekilde daha yüksek olduğu görülmektedir. Bu durum, toplumsal cinsiyet temelli istihdam eşitsizliğinin bölgesel düzeyde yaygın bir sorun olduğunu ortaya koymaktadır.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerekli paketler</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;tidyr&quot;)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;readr&quot;)</span></span>
@@ -4917,7 +4917,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="veriler-.rdata-haline-getirildi.">Veriler .RData haline getirildi.</h2>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bolge_duzeyi <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;bolge_duzeyi.xlsx&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cocuga_bagli_istihdam_orani <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;cocuga_bagli_istihdam_orani.xlsx&quot;</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>meslek_gruplarina_gore_kazanc <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;meslek_gruplarina_gore_kazanc.xlsx&quot;</span>)</span>
@@ -4939,7 +4939,7 @@ vertical-align: -.125em;
 </div>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geçici bir ortamda sadece bolge_duzeyi verisini yükle</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>temp_env <span class="ot">&lt;-</span> <span class="fu">new.env</span>()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;kadın_projesi_verisi.RData&quot;</span>, <span class="at">envir =</span> temp_env)</span>
@@ -4984,7 +4984,7 @@ vertical-align: -.125em;
 <p>Eğitim düzeyine göre kadın ve erkek için yıllık kazanç miktarları Şekil-2.2’deki grafikte gösterilmektedir. 2023 yılı verilerine göre kazanç düzeylerinin hem erkeklerde hem de kadınlarda eğitim durumu ile birlikte yükseldiği görülmektedir. Ancak eğitim seviyesi arttıkça cinsiyetler arası kazanç farkı belirginleşmektedir. Bu durum, özellikle yükseköğretim mezunları arasında ciddi bir gelir eşitsizliğine işaret etmektedir. Eğitim durumuna göre en yüksek yıllık ortalama brüt kazancı yükseköğretim eğitim düzeyine sahip olanlar elde etmiş olup, bu eğitim düzeyinde yıllık ortalama brüt kazanç erkeklerde 431 bin 364 TL, kadınlarda ise 354 bin 149 TL olmuştur. Tüm seviyelerde erkek ve kadın aynı eğitim düzeyinde olmasına rağmen erkeklerin yıllık ortalama brüt kazancının kadınlardan fazla olduğu görülmektedir.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -5026,7 +5026,7 @@ vertical-align: -.125em;
 <p>Meslek gruplarına göre kadın ve erkek için yıllık ortalama kazanç verileri Şekil-2.3’te gösterilmektedir. 2023 yılı verilerine göre, kadınlarda en yüksek yıllık ortalama brüt kazancı 530.663,00 TL ile yöneticiler meslek grubunda çalışanlar elde etmiştir. Yönetici pozisyonunda çalışan erkek ve kadınlar arasında yıllık ortalama kazançlarında farklılığın düşük olduğu dikkat çekmektedir. En düşük yıllık ortalama brüt kazanç ise 185.860,00 TL ile nitelikli tarım, ormancılık ve su ürünleri çalışanları grubunda gerçekleşmiştir. Yalnızca “Hizmet ve servis elemanları” meslek grubunda çalışan kadınlar aynı meslek grubunda çalışan erkeklere göre daha fazla yıllık ortalama kazanç elde etmiş, diğer tüm meslek gruplarında erkekler kadınlardan daha fazla yıllık ortalama kazanç sağlamıştır.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -5089,7 +5089,7 @@ vertical-align: -.125em;
 <p>Yıllara göre kadın ve erkek için üst ve orta düzey yönetici olma oranı Şekil-2.4’teki grafikte gösterilmektedir. Üst ve orta düzey yönetici pozisyonundaki kadın oranı 2012 yılında %14.4 iken 2023 yılında %20.6 olmuştur. Bu artış, kadınların liderlik pozisyonlarında görünürlüğünün zamanla arttığını göstermektedir. Ancak artış hızı yavaş ve sınırlı kalmıştır. Bu oran erkeklerde 2012 yılında %85.6 iken 2023 yılında %79.4 olarak gerçekleşmiştir. Bu düşüş, kadınların yönetime daha fazla dâhil olmaya başladığını gösterse de, erkekler hâlâ yönetici pozisyonlarının büyük çoğunluğunu elinde bulundurmaktadır. 2012-2023 yıllarındaki orta ve üst düzey yönetici oranları incelendiğinde tüm yıllarda kadınların yönetici pozisyonunda erkeklerle kıyaslandığında çok daha az yer bulabildiği görülmektedir.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -5147,7 +5147,7 @@ vertical-align: -.125em;
 <p>2014-2023 yılları için veriler incelendiğinde çocuk sahibi olmayan kadınların istihdam oranının, 3 yaş altı çocuk sahibi olan kadınlara kıyasla tüm yıllar için neredeyse iki katı olduğu görülmektedir. Bu durum erkeklerde ters etki yaratmaktadır. 3 yaş altı çocuk sahibi olan erkeklerin istihdam oranı, çocuk sahibi olmayanlara göre daha fazladır. Bu grafik, bakım yükümlülüklerinin cinsiyetler arasında eşit dağılmadığını açıkça göstermektedir. Erkeklerin çocuk sahibi olduktan sonra istihdam oranları büyük ölçüde korunurken, kadınların istihdam oranı keskin şekilde düşmektedir.</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
@@ -5218,7 +5218,7 @@ vertical-align: -.125em;
 <p>İşsizlik Oranı = β0 + β1 × Eğitim Düzeyi + β2 × Cinsiyet + β3 × (Eğitim Düzeyi × Cinsiyet) + ϵ</p>
 <div class="cell">
 <details class="code-fold">
-<summary>Show the code</summary>
+<summary>Kodu Görmek İçin Tıklayınız</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geçici ortam oluştur ve RData dosyasını yükle</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>temp_env <span class="ot">&lt;-</span> <span class="fu">new.env</span>()</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;kadın_projesi_verisi.RData&quot;</span>, <span class="at">envir =</span> temp_env)</span>

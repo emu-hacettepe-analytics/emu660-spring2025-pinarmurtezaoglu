@@ -4,7 +4,7 @@ format:
   html:
     css: styles.css
     code-fold: true
-    code-summary: "Show the code"
+    code-summary: "Kodu Görmek İçin Tıklayınız"
     code-copy: true
     embed-resources: true
     
