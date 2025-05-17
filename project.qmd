@@ -3,12 +3,7 @@ title: "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği
 format: html
 editor: visual
 ---
-## ✨ Veri Hazırlık Aşaması
 
-Aşağıdaki kod bloğu, Excel formatındaki 6 farklı veri setini okuyarak birleştirir ve bunları `kadın_projesi_verisi.RData` adlı dosyaya kaydeder.
-
-::: {.callout-note collapse="true"}
-### 📂 Kodu görmek için tıklayın
 
 
 
@@ -58,6 +53,8 @@ Kadın istihdamının en az olduğu beş bölgeye bakıldığında neredeyse tam
 
 Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla anlamlı şekilde daha yüksek olduğu görülmektedir. Bu durum, toplumsal cinsiyet temelli istihdam eşitsizliğinin bölgesel düzeyde yaygın bir sorun olduğunu ortaya koymaktadır.
 
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
 
 ```{r}
 # Gerekli paketler
@@ -76,6 +73,13 @@ library(patchwork)
 
 ```
 
+##Veriler .RData haline getirildi.
+
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
+
+
+```{r}
 bolge_duzeyi <- read_excel("bolge_duzeyi.xlsx")
 cocuga_bagli_istihdam_orani <- read_excel("cocuga_bagli_istihdam_orani.xlsx")
 meslek_gruplarina_gore_kazanc <- read_excel("meslek_gruplarina_gore_kazanc.xlsx")
@@ -94,6 +98,10 @@ save(
   file = "kadın_projesi_verisi.RData"
 )
 
+```
+
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
 
 ```{r}
 
@@ -134,6 +142,9 @@ ggplot(veri, aes(x = istihdam_orani, y = bolge, fill = cinsiyet)) +
 
 Eğitim düzeyine göre kadın ve erkek için yıllık kazanç miktarları Şekil-2.2’deki grafikte gösterilmektedir. 2023 yılı verilerine göre kazanç düzeylerinin hem erkeklerde hem de kadınlarda eğitim durumu ile birlikte yükseldiği görülmektedir. Ancak eğitim seviyesi arttıkça cinsiyetler arası kazanç farkı belirginleşmektedir. Bu durum, özellikle yükseköğretim mezunları arasında ciddi bir gelir eşitsizliğine işaret etmektedir. Eğitim durumuna göre en yüksek yıllık ortalama brüt kazancı yükseköğretim eğitim düzeyine sahip olanlar elde etmiş olup, bu eğitim düzeyinde yıllık ortalama brüt kazanç erkeklerde 431 bin 364 TL, kadınlarda ise 354 bin 149 TL olmuştur. Tüm seviyelerde erkek ve kadın aynı eğitim düzeyinde olmasına rağmen erkeklerin yıllık ortalama brüt kazancının kadınlardan fazla olduğu görülmektedir.
 
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
+
 ```{r}
 library(readxl)
 library(ggplot2)
@@ -167,6 +178,9 @@ ggplot(veri, aes(x = reorder(egitim_duzeyi, yillik_ort_brut_kazanc),
 \#**2.3. Meslek Gruplarına Göre Kazanç Durumu**
 
 Meslek gruplarına göre kadın ve erkek için yıllık ortalama kazanç verileri Şekil-2.3’te gösterilmektedir. 2023 yılı verilerine göre, kadınlarda en yüksek yıllık ortalama brüt kazancı 530.663,00 TL ile yöneticiler meslek grubunda çalışanlar elde etmiştir. Yönetici pozisyonunda çalışan erkek ve kadınlar arasında yıllık ortalama kazançlarında farklılığın düşük olduğu dikkat çekmektedir. En düşük yıllık ortalama brüt kazanç ise 185.860,00 TL ile nitelikli tarım, ormancılık ve su ürünleri çalışanları grubunda gerçekleşmiştir. Yalnızca “Hizmet ve servis elemanları” meslek grubunda çalışan kadınlar aynı meslek grubunda çalışan erkeklere göre daha fazla yıllık ortalama kazanç elde etmiş, diğer tüm meslek gruplarında erkekler kadınlardan daha fazla yıllık ortalama kazanç sağlamıştır.
+
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
 
 ```{r}
 library(readxl)
@@ -219,6 +233,9 @@ ggplot(veri, aes(x = meslek, y = yillik_ort_kazanc, fill = cinsiyet)) +
 
 Yıllara göre kadın ve erkek için üst ve orta düzey yönetici olma oranı Şekil-2.4’teki grafikte gösterilmektedir. Üst ve orta düzey yönetici pozisyonundaki kadın oranı 2012 yılında %14.4 iken 2023 yılında %20.6 olmuştur. Bu artış, kadınların liderlik pozisyonlarında görünürlüğünün zamanla arttığını göstermektedir. Ancak artış hızı yavaş ve sınırlı kalmıştır. Bu oran erkeklerde 2012 yılında %85.6 iken 2023 yılında %79.4 olarak gerçekleşmiştir. Bu düşüş, kadınların yönetime daha fazla dâhil olmaya başladığını gösterse de, erkekler hâlâ yönetici pozisyonlarının büyük çoğunluğunu elinde bulundurmaktadır. 2012-2023 yıllarındaki orta ve üst düzey yönetici oranları incelendiğinde tüm yıllarda kadınların yönetici pozisyonunda erkeklerle kıyaslandığında çok daha az yer bulabildiği görülmektedir.
 
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
+
 ```{r}
 library(readxl)
 library(ggplot2)
@@ -268,6 +285,9 @@ ggplot(veri, aes(x = as.factor(yil), y = orta_ust_yonetici_orani, color = cinsiy
 Üç yaş altı çocuk sahibi olma durumuna göre kadın ve erkek için yıllara göre istihdam oranları Şekil-2.5’te gösterilmektedir. 2023 yılında hanesinde 3 yaşın altında çocuğu olan 25-49 yaş grubundaki kadınların istihdam oranının %27,1, erkeklerin istihdam oranının ise %90,6 olduğu görülmüştür. 2023 yılında çocuk sahibi olmayan kadınların istihdam oranı %58 iken, erkekler için bu oran %79.3’tür.
 
 2014-2023 yılları için veriler incelendiğinde çocuk sahibi olmayan kadınların istihdam oranının, 3 yaş altı çocuk sahibi olan kadınlara kıyasla tüm yıllar için neredeyse iki katı olduğu görülmektedir. Bu durum erkeklerde ters etki yaratmaktadır. 3 yaş altı çocuk sahibi olan erkeklerin istihdam oranı, çocuk sahibi olmayanlara göre daha fazladır. Bu grafik, bakım yükümlülüklerinin cinsiyetler arasında eşit dağılmadığını açıkça göstermektedir. Erkeklerin çocuk sahibi olduktan sonra istihdam oranları büyük ölçüde korunurken, kadınların istihdam oranı keskin şekilde düşmektedir.
+
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
 
 ```{r}
 library(readxl)
@@ -333,6 +353,9 @@ Analizde, cinsiyet ve eğitim düzeyi arasındaki etkileşimi gözlemlemek için
 İşsizlik oranı, bir ekonomide işi olmayıp iş arayanların işgücüne oranıdır. İşsizlik oranı ekonominin performansını yansıtması bakımından oldukça önemlidir. Bu modelde işsizlik oranı bağımlı değişken olarak kullanılmış ve benzer şekilde eğitim düzeyi ile cinsiyet arasındaki etkileşim dikkate alınarak analiz edilmiştir:
 
 İşsizlik Oranı = β0 + β1 × Eğitim Düzeyi + β2 × Cinsiyet + β3 × (Eğitim Düzeyi × Cinsiyet) + ϵ
+
+::: {.callout-note collapse="true"}
+### 📂 Kodu görmek için tıklayın
 
 ```{r}
 # Geçici ortam oluştur ve RData dosyasını yükle
