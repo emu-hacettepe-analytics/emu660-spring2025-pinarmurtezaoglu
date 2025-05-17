@@ -226,14 +226,14 @@
     "href": "project.html#veri-kaynağı",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "2.1 Veri Kaynağı",
-    "text": "2.1 Veri Kaynağı\nÇalışma kapsamında iki ayrı veri seti kullanılmış ve birleştirilmiştir. Veriler, Türkiye İstatistik Kurumu (TÜİK) veri tabanından elde edilmiştir. Veri setinden bir tanesi, İstatistiklerle Kadın 2024 raporu kapsamında temin edilmiştir. Bu raporda kadınların eğitim, istihdam, kazanç ve yöneticilik durumlarına ilişkin istatistikler yer almaktadır. Verilere linke tıklayarak erişebilirsiniz: https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076. Diğer veri seti ise TÜİK Veri Portalı üzerinden İşgücü İstatistikleri(2014 ve sonrası) veritabanından oluşturulmuştur. Veri portalına linke tıklayarak erişebilirsiniz: https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC. Veriler, TÜİK’in çevrimiçi veri portalından .xlsx formatında indirilmiştir."
+    "text": "2.1 Veri Kaynağı\nÇalışma kapsamında iki ayrı veri seti kullanılmış ve analiz için birleştirilmiştir. Veriler, Türkiye İstatistik Kurumu (TÜİK) veri tabanından elde edilmiştir.\nVeri setlerinden ilki, İstatistiklerle Kadın 2024 raporu kapsamında temin edilmiştir. Bu raporda kadınların eğitim, istihdam, kazanç ve yöneticilik durumlarına ilişkin istatistikler yer almaktadır.\nDiğer veri seti ise, TÜİK Veri Portalı üzerinden sağlanan İşgücü İstatistikleri (2014 ve sonrası) veritabanından oluşturulmuştur. Bu veri seti, cinsiyet ve eğitim düzeyine göre işgücü, istihdam ve işsizlik oranlarını içermektedir.\nTüm veriler, TÜİK’in çevrimiçi veri portalından .xlsx formatında indirilmiştir."
   },
   {
     "objectID": "project.html#veriler-hakkında-genel-bilgi",
     "href": "project.html#veriler-hakkında-genel-bilgi",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "2.2 Veriler Hakkında Genel Bilgi",
-    "text": "2.2 Veriler Hakkında Genel Bilgi\nÇalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır. Son yıla ait veriler (2015-2024) ele alınmıştır.\nBu proje kapsamında kullanılan veri setleri şunlardır:\nbolge_duzeyi.xlsx: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.\ncocuga_bagli_istihdam_orani.xlsx: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.\nmeslek_gruplarina_gore_kazanc.xlsx: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).\nyillik_kazanc.xlsx: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).\nyonetici.xlsx: Yönetici pozisyonundaki kadın ve erkek oranları.\nisgucu_verisi.xlsx: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları."
+    "text": "2.2 Veriler Hakkında Genel Bilgi\nÇalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır. Son yıla ait veriler (2015-2024) ele alınmıştır.\nBu proje kapsamında kullanılan veri setleri şunlardır:\n\nbolge_duzeyi.xlsx: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.\ncocuga_bagli_istihdam_orani.xlsx: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.\nmeslek_gruplarina_gore_kazanc.xlsx: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).\nyillik_kazanc.xlsx: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).\nyonetici.xlsx: Yönetici pozisyonundaki kadın ve erkek oranları.\nisgucu_verisi.xlsx: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları."
   },
   {
     "objectID": "project.html#verilerin-seçilme-sebebi",
@@ -247,7 +247,7 @@
     "href": "project.html#ön-işleme",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "2.4. Ön İşleme",
-    "text": "2.4. Ön İşleme\nVerileri analiz için uygun hale getirmek amacıyla bazı düzenlemeler yapılmıştır.\nBilinmeyen Veri (NA): Veri setinde yer alan İşgücü Verileri dosyasında, İlköğretim eğitim düzeyinde kadın ve erkek için 2021, 2022, 2023 ve 2024 yıllarına ait istihdam oranı ve işsizlik oranı verileri eksiktir (Toplam 16 veri). İşsizlik oranındaki eksik verileri tamamlamak için cinsiyete göre ilköğretim düzeyindeki verilerin ortalaması alınmış; aynı işlem istihdam oranı için de tekrarlanmıştır.\nEğitim Düzeyi: Eğitim düzeyine dair veriler sıralı sayı haline getirilmiştir. Veri tablolarında eğitim düzeyleri; okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim şeklinde beş kategoriye ayrılmıştır. Analizi kolaylaştırmak için eğitim düzeyleri sırasıyla 1,2,3,4 ve 5 olarak tanımlanmıştır.\nDüzenlenen veri kümeleri, gelecekteki oturumlar için yeniden üretilebilirlik ve daha hızlı işleme için birleştirilere .RData biçiminde kadın_projesi_verisi.RData ismiyle kaydedilmiştir.\n\n\nKodu Görmek İçin Tıklayınız\n# Gerekli paketler\n#install.packages(\"tidyr\")\n#install.packages(\"readr\")\n#install.packages(\"dplyr\")\n#install.packages(\"readxl\")\n#install.packages(\"ggplot2\")\n#install.packages(\"purrr\", repos = \"https://cran.r-project.org\")\nlibrary(readxl)\nlibrary(ggplot2)\nlibrary(tidyr)\nlibrary(dplyr)\nlibrary(readr)\nlibrary(patchwork)\nlibrary(purrr)\n\nbolge_duzeyi &lt;- read_excel(\"bolge_duzeyi.xlsx\")\ncocuga_bagli_istihdam_orani &lt;- read_excel(\"cocuga_bagli_istihdam_orani.xlsx\")\nmeslek_gruplarina_gore_kazanc &lt;- read_excel(\"meslek_gruplarina_gore_kazanc.xlsx\")\nyillik_kazanc &lt;- read_excel(\"yillik_kazanc.xlsx\")\nyonetici &lt;- read_excel(\"yonetici.xlsx\")\nisgucu_verisi &lt;- read_excel(\"Isgucu_verisi.xlsx\")\n\n# .RData dosyasına kaydet\nsave(\n  bolge_duzeyi,\n  cocuga_bagli_istihdam_orani,\n  meslek_gruplarina_gore_kazanc,\n  yillik_kazanc,\n  yonetici,\n  isgucu_verisi,\n  file = \"kadın_projesi_verisi.RData\"\n)"
+    "text": "2.4. Ön İşleme\nVerileri analiz için uygun hale getirmek amacıyla bazı düzenlemeler yapılmıştır.\n\nBilinmeyen Veri (NA)\nVeri setinde yer alan İşgücü Verileri dosyasında, ilköğretim eğitim düzeyinde kadın ve erkek için 2021, 2022, 2023 ve 2024 yıllarına ait istihdam oranı ve işsizlik oranı verileri eksiktir (toplam 16 veri).\nİşsizlik oranındaki eksik verileri tamamlamak amacıyla, cinsiyete göre ilköğretim düzeyindeki mevcut verilerin ortalaması alınmıştır; aynı işlem istihdam oranı için de uygulanmıştır.\n\n\nEğitim Düzeyi\nEğitim düzeyine ilişkin veriler sıralı sayı haline getirilerek analiz için yeniden kodlanmıştır.\nVeri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır: - Okuma yazma bilmeyen - İlköğretim - Genel lise - Lise dengi mesleki okul - Yükseköğretim\nAnalizi kolaylaştırmak amacıyla bu kategoriler sırasıyla 1, 2, 3, 4 ve 5 olarak tanımlanmıştır.\n\n\n.RData Kaydı\nDüzenlenen veri kümeleri, gelecekteki oturumlarda yeniden üretilebilirlik ve daha hızlı işleme imkânı sunmak amacıyla birleştirilerek .RData formatında kadın_projesi_verisi.RData ismiyle kaydedilmiştir.\n\n\nKodu Görmek İçin Tıklayınız\n# Gerekli paketler\n#install.packages(\"tidyr\")\n#install.packages(\"readr\")\n#install.packages(\"dplyr\")\n#install.packages(\"readxl\")\n#install.packages(\"ggplot2\")\n#install.packages(\"purrr\", repos = \"https://cran.r-project.org\")\nlibrary(readxl)\nlibrary(ggplot2)\nlibrary(tidyr)\nlibrary(dplyr)\nlibrary(readr)\nlibrary(patchwork)\nlibrary(purrr)\n\nbolge_duzeyi &lt;- read_excel(\"bolge_duzeyi.xlsx\")\ncocuga_bagli_istihdam_orani &lt;- read_excel(\"cocuga_bagli_istihdam_orani.xlsx\")\nmeslek_gruplarina_gore_kazanc &lt;- read_excel(\"meslek_gruplarina_gore_kazanc.xlsx\")\nyillik_kazanc &lt;- read_excel(\"yillik_kazanc.xlsx\")\nyonetici &lt;- read_excel(\"yonetici.xlsx\")\nisgucu_verisi &lt;- read_excel(\"Isgucu_verisi.xlsx\")\n\n# .RData dosyasına kaydet\nsave(\n  bolge_duzeyi,\n  cocuga_bagli_istihdam_orani,\n  meslek_gruplarina_gore_kazanc,\n  yillik_kazanc,\n  yonetici,\n  isgucu_verisi,\n  file = \"kadın_projesi_verisi.RData\"\n)"
   },
   {
     "objectID": "project.html#veri-örneği",
@@ -275,42 +275,42 @@
     "href": "project.html#isgucu_verisi",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "isgucu_verisi",
-    "text": "isgucu_verisi\nDeğişkenler: yil: 2015-2024 yılları cinsiyet: Kadın ve Erkek egitim_duzeyi: Okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim olmak üzere beş seviye istihdam_orani: istihdam oranı(%) issizlik_orani: işsizlik oranı (%)"
+    "text": "isgucu_verisi\nDeğişkenler:\n- yil: 2015-2024 yılları\n- cinsiyet: Kadın ve Erkek\n- egitim_duzeyi: Okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim olmak üzere beş seviye\n- istihdam_orani: İstihdam oranı (%)\n- issizlik_orani: İşsizlik oranı (%)"
   },
   {
     "objectID": "project.html#bolge_duzeyi",
     "href": "project.html#bolge_duzeyi",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "bolge_duzeyi",
-    "text": "bolge_duzeyi\nDeğişkenler: bolge: İBBS 2. düzey bölgeleri(26 bölge) cinsiyet: Kadın ve Erkek istihdam_orani: İstihdam oranı (%)"
+    "text": "bolge_duzeyi\nDeğişkenler:\n- bolge: İBBS 2. düzey bölgeleri (26 bölge)\n- cinsiyet: Kadın ve Erkek\n- istihdam_orani: İstihdam oranı (%)"
   },
   {
     "objectID": "project.html#cocuga_bagli_istihdam_orani",
     "href": "project.html#cocuga_bagli_istihdam_orani",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "cocuga_bagli_istihdam_orani",
-    "text": "cocuga_bagli_istihdam_orani\nÇocuk sahibi olma durumuna Değişkenler: yil: 2015-1023 yılları cinsiyet: Kadın ve Erkek 3yasalti_cocuk_olan_istihdam_orani: Üç yaş altı çocuk sahibi olanların istihdam oranı(%) cocuk_olmayan_istihdam_orani: Üç yaş altı çocuk sahibi olmayanların istihdam oranı (%)"
+    "text": "cocuga_bagli_istihdam_orani\nDeğişkenler:\n- yil: 2015-2023 yılları\n- cinsiyet: Kadın ve Erkek\n- 3yasalti_cocuk_olan_istihdam_orani: Üç yaş altı çocuk sahibi olanların istihdam oranı (%)\n- cocuk_olmayan_istihdam_orani: Üç yaş altı çocuğu olmayanların istihdam oranı (%)"
   },
   {
     "objectID": "project.html#meslek_gruplarina_gore_kazanc",
     "href": "project.html#meslek_gruplarina_gore_kazanc",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "meslek_gruplarina_gore_kazanc",
-    "text": "meslek_gruplarina_gore_kazanc\nDeğişkenler: yil:2023 yılı cinsiyet: Kadın ve Erkek meslek: Çeşitli meslek grupları yillik_ort_kazanc: Yıllık ortalama kazanç(TL)"
+    "text": "meslek_gruplarina_gore_kazanc\nDeğişkenler:\n- yil: 2023\n- cinsiyet: Kadın ve Erkek\n- meslek: Çeşitli meslek grupları\n- yillik_ort_kazanc: Yıllık ortalama kazanç (TL)"
   },
   {
     "objectID": "project.html#yillik_kazanc",
     "href": "project.html#yillik_kazanc",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "yillik_kazanc",
-    "text": "yillik_kazanc\nDeğişkenler: yil: 2023 cinsiyet: Kadın ve Erkek egitim_duzeyi: İlkokul ve altı, ilköğretim ve ortaokul,lise, yükseköğretim olmak üzere dört düzey yillik_ort_brüt_kazanc: Yıllık ortalama brüt kazanç (TL)"
+    "text": "yillik_kazanc\nDeğişkenler:\n- yil: 2023\n- cinsiyet: Kadın ve Erkek\n- egitim_duzeyi: İlkokul ve altı, ilköğretim ve ortaokul, lise, yükseköğretim olmak üzere dört düzey\n- yillik_ort_brüt_kazanc: Yıllık ortalama brüt kazanç (TL)"
   },
   {
     "objectID": "project.html#yonetici",
     "href": "project.html#yonetici",
     "title": "Türkiye’de Kadınların Sosyoekonomik Durumu Üzerine Veri Analitiği Temelli Bir İnceleme",
     "section": "yonetici",
-    "text": "yonetici\nDeğişkenler: yil: 2015-2023 yılları cinsiyet: Kadın ve Erkek orta_üst_yönetici_orani: Orta ve üst yönetici oranı(%)"
+    "text": "yonetici\nDeğişkenler:\n- yil: 2015-2023 yılları\n- cinsiyet: Kadın ve Erkek\n- orta_üst_yönetici_orani: Orta ve üst düzey yönetici oranı (%) ## 3.2. Görselleştirme ve Analiz\nKadınların işgücü piyasasındaki konumlarını anlamamıza yardımcı olması amacıyla her bir veri setinden grafikler çizilmiş ve yorumlanmıştır."
   },
   {
     "objectID": "project.html#görselleştirme-ve-analiz",

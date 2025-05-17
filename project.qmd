@@ -36,8 +36,13 @@ Bu çalışma, kadın ve erkeklerin temel istihdam göstergelerini karşılaşt�
 
 ## 2.1 Veri Kaynağı
 
-Çalışma kapsamında iki ayrı veri seti kullanılmış ve birleştirilmiştir. Veriler, Türkiye İstatistik Kurumu (TÜİK) veri tabanından elde edilmiştir. Veri setinden bir tanesi, İstatistiklerle Kadın 2024 raporu kapsamında temin edilmiştir. Bu raporda kadınların eğitim, istihdam, kazanç ve yöneticilik durumlarına ilişkin istatistikler yer almaktadır. Verilere linke tıklayarak erişebilirsiniz:  https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076. Diğer veri seti ise TÜİK Veri Portalı üzerinden İşgücü İstatistikleri(2014 ve sonrası) veritabanından oluşturulmuştur. Veri portalına linke tıklayarak erişebilirsiniz: https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC. 
-Veriler, TÜİK’in çevrimiçi veri portalından .xlsx formatında indirilmiştir. 
+Çalışma kapsamında **iki ayrı veri seti** kullanılmış ve analiz için birleştirilmiştir. Veriler, **Türkiye İstatistik Kurumu (TÜİK)** veri tabanından elde edilmiştir.
+
+Veri setlerinden ilki, [**İstatistiklerle Kadın 2024**](https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076) raporu kapsamında temin edilmiştir. Bu raporda kadınların **eğitim**, **istihdam**, **kazanç** ve **yöneticilik** durumlarına ilişkin istatistikler yer almaktadır.
+
+Diğer veri seti ise, **TÜİK Veri Portalı** üzerinden sağlanan [**İşgücü İstatistikleri (2014 ve sonrası)**](https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC) veritabanından oluşturulmuştur. Bu veri seti, cinsiyet ve eğitim düzeyine göre işgücü, istihdam ve işsizlik oranlarını içermektedir.
+
+Tüm veriler, TÜİK’in çevrimiçi veri portalından `.xlsx` formatında indirilmiştir.
 
 ## 2.2 Veriler Hakkında Genel Bilgi
 
@@ -45,18 +50,12 @@ Veriler, TÜİK’in çevrimiçi veri portalından .xlsx formatında indirilmiş
 
 Bu proje kapsamında kullanılan veri setleri şunlardır:
 
-bolge_duzeyi.xlsx: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.
-
-cocuga_bagli_istihdam_orani.xlsx: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.
-
-meslek_gruplarina_gore_kazanc.xlsx: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).
-
-yillik_kazanc.xlsx: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).
-
-yonetici.xlsx: Yönetici pozisyonundaki kadın ve erkek oranları.
-
-isgucu_verisi.xlsx: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları.
-
+- `bolge_duzeyi.xlsx`: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.
+- `cocuga_bagli_istihdam_orani.xlsx`: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.
+- `meslek_gruplarina_gore_kazanc.xlsx`: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).
+- `yillik_kazanc.xlsx`: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).
+- `yonetici.xlsx`: Yönetici pozisyonundaki kadın ve erkek oranları.
+- `isgucu_verisi.xlsx`: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları.
 
 
 ## 2.3 Verilerin Seçilme Sebebi
@@ -75,14 +74,25 @@ Bu çalışmada kullanılan veriler, kamuya açık ve ücretsiz olarak sunulan T
 
 ## 2.4. Ön İşleme
 
-Verileri analiz için uygun hale getirmek amacıyla bazı düzenlemeler yapılmıştır. 
+Verileri analiz için uygun hale getirmek amacıyla bazı düzenlemeler yapılmıştır.
 
-Bilinmeyen Veri (NA): Veri setinde yer alan İşgücü Verileri dosyasında,  İlköğretim eğitim düzeyinde kadın ve erkek için 2021, 2022, 2023 ve 2024 yıllarına ait istihdam oranı ve işsizlik oranı verileri eksiktir (Toplam 16 veri). İşsizlik oranındaki eksik verileri tamamlamak için cinsiyete göre ilköğretim düzeyindeki verilerin ortalaması alınmış; aynı işlem istihdam oranı için de tekrarlanmıştır.
+#### `Bilinmeyen Veri (NA)`
+Veri setinde yer alan `İşgücü Verileri` dosyasında, **ilköğretim eğitim düzeyinde** kadın ve erkek için **2021, 2022, 2023 ve 2024** yıllarına ait **istihdam oranı** ve **işsizlik oranı** verileri eksiktir (toplam `16 veri`).  
+İşsizlik oranındaki eksik verileri tamamlamak amacıyla, cinsiyete göre ilköğretim düzeyindeki mevcut verilerin ortalaması alınmıştır; aynı işlem istihdam oranı için de uygulanmıştır.
 
-Eğitim Düzeyi: Eğitim düzeyine dair veriler sıralı sayı haline getirilmiştir.
-Veri tablolarında eğitim düzeyleri; okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim şeklinde beş kategoriye ayrılmıştır. Analizi kolaylaştırmak için eğitim düzeyleri sırasıyla 1,2,3,4 ve 5 olarak tanımlanmıştır.
+#### `Eğitim Düzeyi`
+Eğitim düzeyine ilişkin veriler **sıralı sayı haline** getirilerek analiz için yeniden kodlanmıştır.  
+Veri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır:
+- Okuma yazma bilmeyen
+- İlköğretim
+- Genel lise
+- Lise dengi mesleki okul
+- Yükseköğretim
 
-Düzenlenen veri kümeleri, gelecekteki oturumlar için yeniden üretilebilirlik ve daha hızlı işleme için birleştirilere .RData biçiminde kadın_projesi_verisi.RData ismiyle kaydedilmiştir.
+Analizi kolaylaştırmak amacıyla bu kategoriler sırasıyla `1`, `2`, `3`, `4` ve `5` olarak tanımlanmıştır.
+
+#### `.RData Kaydı`
+Düzenlenen veri kümeleri, gelecekteki oturumlarda yeniden üretilebilirlik ve daha hızlı işleme imkânı sunmak amacıyla birleştirilerek `.RData` formatında `kadın_projesi_verisi.RData` ismiyle kaydedilmiştir.
 
 ```{r setup, message=FALSE}
 # Gerekli paketler
@@ -161,48 +171,52 @@ veri_ozet <- map_dfr(names(veri_listesi), function(ad) {
 
 veri_ozet
 ```
-## isgucu_verisi
-Değişkenler:
-yil: 2015-2024 yılları
-cinsiyet: Kadın ve Erkek 
-egitim_duzeyi: Okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim olmak üzere beş seviye 
-istihdam_orani: istihdam oranı(%)
-issizlik_orani: işsizlik oranı (%)
+## `isgucu_verisi`
 
-## bolge_duzeyi
-Değişkenler:
-bolge: İBBS 2. düzey bölgeleri(26 bölge)
-cinsiyet: Kadın ve Erkek
-istihdam_orani: İstihdam oranı (%)
+**Değişkenler:**  
+- `yil`: 2015-2024 yılları  
+- `cinsiyet`: Kadın ve Erkek  
+- `egitim_duzeyi`: `Okuma yazma bilmeyen`, `ilköğretim`, `genel lise`, `lise dengi mesleki okul`, `yükseköğretim` olmak üzere beş seviye  
+- `istihdam_orani`: İstihdam oranı (%)  
+- `issizlik_orani`: İşsizlik oranı (%)
 
-## cocuga_bagli_istihdam_orani
-Çocuk sahibi olma durumuna
-Değişkenler:
-yil: 2015-1023 yılları
-cinsiyet: Kadın ve Erkek
-3yasalti_cocuk_olan_istihdam_orani: Üç yaş altı çocuk sahibi olanların istihdam oranı(%)
-cocuk_olmayan_istihdam_orani: Üç yaş altı çocuk sahibi olmayanların istihdam oranı (%)
+## `bolge_duzeyi`
 
-## meslek_gruplarina_gore_kazanc
-Değişkenler:
-yil:2023 yılı
-cinsiyet: Kadın ve Erkek
-meslek: Çeşitli meslek grupları
-yillik_ort_kazanc: Yıllık ortalama kazanç(TL)
+**Değişkenler:**  
+- `bolge`: İBBS 2. düzey bölgeleri (26 bölge)  
+- `cinsiyet`: Kadın ve Erkek  
+- `istihdam_orani`: İstihdam oranı (%)
 
-## yillik_kazanc
-Değişkenler:
-yil: 2023
-cinsiyet: Kadın ve Erkek
-egitim_duzeyi: İlkokul ve altı, ilköğretim ve ortaokul,lise, yükseköğretim olmak üzere dört düzey
-yillik_ort_brüt_kazanc: Yıllık ortalama brüt kazanç (TL)
+## `cocuga_bagli_istihdam_orani`
 
-## yonetici
-Değişkenler:
-yil: 2015-2023 yılları
-cinsiyet: Kadın ve Erkek
-orta_üst_yönetici_orani: Orta ve üst yönetici oranı(%)
+**Değişkenler:**  
+- `yil`: 2015-2023 yılları  
+- `cinsiyet`: Kadın ve Erkek  
+- `3yasalti_cocuk_olan_istihdam_orani`: Üç yaş altı çocuk sahibi olanların istihdam oranı (%)  
+- `cocuk_olmayan_istihdam_orani`: Üç yaş altı çocuğu olmayanların istihdam oranı (%)
 
+## `meslek_gruplarina_gore_kazanc`
+
+**Değişkenler:**  
+- `yil`: 2023  
+- `cinsiyet`: Kadın ve Erkek  
+- `meslek`: Çeşitli meslek grupları  
+- `yillik_ort_kazanc`: Yıllık ortalama kazanç (TL)
+
+## `yillik_kazanc`
+
+**Değişkenler:**  
+- `yil`: 2023  
+- `cinsiyet`: Kadın ve Erkek  
+- `egitim_duzeyi`: `İlkokul ve altı`, `ilköğretim ve ortaokul`, `lise`, `yükseköğretim` olmak üzere dört düzey  
+- `yillik_ort_brüt_kazanc`: Yıllık ortalama brüt kazanç (TL)
+
+## `yonetici`
+
+**Değişkenler:**  
+- `yil`: 2015-2023 yılları  
+- `cinsiyet`: Kadın ve Erkek  
+- `orta_üst_yönetici_orani`: Orta ve üst düzey yönetici oranı (%)
 ## 3.2. Görselleştirme ve Analiz
 
 Kadınların işgücü piyasasındaki konumlarını anlamamıza yardımcı olması amacıyla her bir veri setinden grafikler çizilmiş ve yorumlanmıştır.  

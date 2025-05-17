@@ -4818,13 +4818,12 @@ vertical-align: -.125em;
   <li><a href="#analiz" id="toc-analiz" class="nav-link" data-scroll-target="#analiz">3.Analiz</a></li>
   <li><a href="#keşifsel-veri-analizi" id="toc-keşifsel-veri-analizi" class="nav-link" data-scroll-target="#keşifsel-veri-analizi">3.1. Keşifsel Veri Analizi</a></li>
   <li><a href="#veri-setine-genel-bakış" id="toc-veri-setine-genel-bakış" class="nav-link" data-scroll-target="#veri-setine-genel-bakış">3.1.1. Veri Setine Genel Bakış</a></li>
-  <li><a href="#isgucu_verisi" id="toc-isgucu_verisi" class="nav-link" data-scroll-target="#isgucu_verisi">isgucu_verisi</a></li>
-  <li><a href="#bolge_duzeyi" id="toc-bolge_duzeyi" class="nav-link" data-scroll-target="#bolge_duzeyi">bolge_duzeyi</a></li>
-  <li><a href="#cocuga_bagli_istihdam_orani" id="toc-cocuga_bagli_istihdam_orani" class="nav-link" data-scroll-target="#cocuga_bagli_istihdam_orani">cocuga_bagli_istihdam_orani</a></li>
-  <li><a href="#meslek_gruplarina_gore_kazanc" id="toc-meslek_gruplarina_gore_kazanc" class="nav-link" data-scroll-target="#meslek_gruplarina_gore_kazanc">meslek_gruplarina_gore_kazanc</a></li>
-  <li><a href="#yillik_kazanc" id="toc-yillik_kazanc" class="nav-link" data-scroll-target="#yillik_kazanc">yillik_kazanc</a></li>
-  <li><a href="#yonetici" id="toc-yonetici" class="nav-link" data-scroll-target="#yonetici">yonetici</a></li>
-  <li><a href="#görselleştirme-ve-analiz" id="toc-görselleştirme-ve-analiz" class="nav-link" data-scroll-target="#görselleştirme-ve-analiz">3.2. Görselleştirme ve Analiz</a></li>
+  <li><a href="#isgucu_verisi" id="toc-isgucu_verisi" class="nav-link" data-scroll-target="#isgucu_verisi"><code>isgucu_verisi</code></a></li>
+  <li><a href="#bolge_duzeyi" id="toc-bolge_duzeyi" class="nav-link" data-scroll-target="#bolge_duzeyi"><code>bolge_duzeyi</code></a></li>
+  <li><a href="#cocuga_bagli_istihdam_orani" id="toc-cocuga_bagli_istihdam_orani" class="nav-link" data-scroll-target="#cocuga_bagli_istihdam_orani"><code>cocuga_bagli_istihdam_orani</code></a></li>
+  <li><a href="#meslek_gruplarina_gore_kazanc" id="toc-meslek_gruplarina_gore_kazanc" class="nav-link" data-scroll-target="#meslek_gruplarina_gore_kazanc"><code>meslek_gruplarina_gore_kazanc</code></a></li>
+  <li><a href="#yillik_kazanc" id="toc-yillik_kazanc" class="nav-link" data-scroll-target="#yillik_kazanc"><code>yillik_kazanc</code></a></li>
+  <li><a href="#yonetici" id="toc-yonetici" class="nav-link" data-scroll-target="#yonetici"><code>yonetici</code></a></li>
   <li><a href="#bölgelere-göre-istihdam-oranı" id="toc-bölgelere-göre-istihdam-oranı" class="nav-link" data-scroll-target="#bölgelere-göre-istihdam-oranı">Bölgelere Göre İstihdam Oranı</a></li>
   <li><a href="#eğitim-durumuna-göre-yıllık-kazanç-durumu" id="toc-eğitim-durumuna-göre-yıllık-kazanç-durumu" class="nav-link" data-scroll-target="#eğitim-durumuna-göre-yıllık-kazanç-durumu">Eğitim Durumuna Göre Yıllık Kazanç Durumu</a></li>
   <li><a href="#meslek-gruplarına-göre-kazanç-durumu" id="toc-meslek-gruplarına-göre-kazanç-durumu" class="nav-link" data-scroll-target="#meslek-gruplarına-göre-kazanç-durumu">Meslek Gruplarına Göre Kazanç Durumu</a></li>
@@ -4876,18 +4875,23 @@ vertical-align: -.125em;
 </section>
 <section id="veri-kaynağı" class="level2">
 <h2 class="anchored" data-anchor-id="veri-kaynağı">2.1 Veri Kaynağı</h2>
-<p>Çalışma kapsamında iki ayrı veri seti kullanılmış ve birleştirilmiştir. Veriler, Türkiye İstatistik Kurumu (TÜİK) veri tabanından elde edilmiştir. Veri setinden bir tanesi, İstatistiklerle Kadın 2024 raporu kapsamında temin edilmiştir. Bu raporda kadınların eğitim, istihdam, kazanç ve yöneticilik durumlarına ilişkin istatistikler yer almaktadır. Verilere linke tıklayarak erişebilirsiniz: https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076. Diğer veri seti ise TÜİK Veri Portalı üzerinden İşgücü İstatistikleri(2014 ve sonrası) veritabanından oluşturulmuştur. Veri portalına linke tıklayarak erişebilirsiniz: https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC. Veriler, TÜİK’in çevrimiçi veri portalından .xlsx formatında indirilmiştir.</p>
+<p>Çalışma kapsamında <strong>iki ayrı veri seti</strong> kullanılmış ve analiz için birleştirilmiştir. Veriler, <strong>Türkiye İstatistik Kurumu (TÜİK)</strong> veri tabanından elde edilmiştir.</p>
+<p>Veri setlerinden ilki, <a href="https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076"><strong>İstatistiklerle Kadın 2024</strong></a> raporu kapsamında temin edilmiştir. Bu raporda kadınların <strong>eğitim</strong>, <strong>istihdam</strong>, <strong>kazanç</strong> ve <strong>yöneticilik</strong> durumlarına ilişkin istatistikler yer almaktadır.</p>
+<p>Diğer veri seti ise, <strong>TÜİK Veri Portalı</strong> üzerinden sağlanan <a href="https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC"><strong>İşgücü İstatistikleri (2014 ve sonrası)</strong></a> veritabanından oluşturulmuştur. Bu veri seti, cinsiyet ve eğitim düzeyine göre işgücü, istihdam ve işsizlik oranlarını içermektedir.</p>
+<p>Tüm veriler, TÜİK’in çevrimiçi veri portalından <code>.xlsx</code> formatında indirilmiştir.</p>
 </section>
 <section id="veriler-hakkında-genel-bilgi" class="level2">
 <h2 class="anchored" data-anchor-id="veriler-hakkında-genel-bilgi">2.2 Veriler Hakkında Genel Bilgi</h2>
 <p>Çalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır. Son yıla ait veriler (2015-2024) ele alınmıştır.</p>
 <p>Bu proje kapsamında kullanılan veri setleri şunlardır:</p>
-<p>bolge_duzeyi.xlsx: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.</p>
-<p>cocuga_bagli_istihdam_orani.xlsx: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.</p>
-<p>meslek_gruplarina_gore_kazanc.xlsx: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).</p>
-<p>yillik_kazanc.xlsx: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).</p>
-<p>yonetici.xlsx: Yönetici pozisyonundaki kadın ve erkek oranları.</p>
-<p>isgucu_verisi.xlsx: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları.</p>
+<ul>
+<li><code>bolge_duzeyi.xlsx</code>: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.</li>
+<li><code>cocuga_bagli_istihdam_orani.xlsx</code>: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.</li>
+<li><code>meslek_gruplarina_gore_kazanc.xlsx</code>: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).</li>
+<li><code>yillik_kazanc.xlsx</code>: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).</li>
+<li><code>yonetici.xlsx</code>: Yönetici pozisyonundaki kadın ve erkek oranları.</li>
+<li><code>isgucu_verisi.xlsx</code>: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları.</li>
+</ul>
 </section>
 <section id="verilerin-seçilme-sebebi" class="level2">
 <h2 class="anchored" data-anchor-id="verilerin-seçilme-sebebi">2.3 Verilerin Seçilme Sebebi</h2>
@@ -4901,9 +4905,20 @@ vertical-align: -.125em;
 <section id="ön-işleme" class="level2">
 <h2 class="anchored" data-anchor-id="ön-işleme">2.4. Ön İşleme</h2>
 <p>Verileri analiz için uygun hale getirmek amacıyla bazı düzenlemeler yapılmıştır.</p>
-<p>Bilinmeyen Veri (NA): Veri setinde yer alan İşgücü Verileri dosyasında, İlköğretim eğitim düzeyinde kadın ve erkek için 2021, 2022, 2023 ve 2024 yıllarına ait istihdam oranı ve işsizlik oranı verileri eksiktir (Toplam 16 veri). İşsizlik oranındaki eksik verileri tamamlamak için cinsiyete göre ilköğretim düzeyindeki verilerin ortalaması alınmış; aynı işlem istihdam oranı için de tekrarlanmıştır.</p>
-<p>Eğitim Düzeyi: Eğitim düzeyine dair veriler sıralı sayı haline getirilmiştir. Veri tablolarında eğitim düzeyleri; okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim şeklinde beş kategoriye ayrılmıştır. Analizi kolaylaştırmak için eğitim düzeyleri sırasıyla 1,2,3,4 ve 5 olarak tanımlanmıştır.</p>
-<p>Düzenlenen veri kümeleri, gelecekteki oturumlar için yeniden üretilebilirlik ve daha hızlı işleme için birleştirilere .RData biçiminde kadın_projesi_verisi.RData ismiyle kaydedilmiştir.</p>
+<section id="bilinmeyen-veri-na" class="level4">
+<h4 class="anchored" data-anchor-id="bilinmeyen-veri-na"><code>Bilinmeyen Veri (NA)</code></h4>
+<p>Veri setinde yer alan <code>İşgücü Verileri</code> dosyasında, <strong>ilköğretim eğitim düzeyinde</strong> kadın ve erkek için <strong>2021, 2022, 2023 ve 2024</strong> yıllarına ait <strong>istihdam oranı</strong> ve <strong>işsizlik oranı</strong> verileri eksiktir (toplam <code>16 veri</code>).<br>
+İşsizlik oranındaki eksik verileri tamamlamak amacıyla, cinsiyete göre ilköğretim düzeyindeki mevcut verilerin ortalaması alınmıştır; aynı işlem istihdam oranı için de uygulanmıştır.</p>
+</section>
+<section id="eğitim-düzeyi" class="level4">
+<h4 class="anchored" data-anchor-id="eğitim-düzeyi"><code>Eğitim Düzeyi</code></h4>
+<p>Eğitim düzeyine ilişkin veriler <strong>sıralı sayı haline</strong> getirilerek analiz için yeniden kodlanmıştır.<br>
+Veri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır: - Okuma yazma bilmeyen - İlköğretim - Genel lise - Lise dengi mesleki okul - Yükseköğretim</p>
+<p>Analizi kolaylaştırmak amacıyla bu kategoriler sırasıyla <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code> ve <code>5</code> olarak tanımlanmıştır.</p>
+</section>
+<section id="rdata-kaydı" class="level4">
+<h4 class="anchored" data-anchor-id="rdata-kaydı"><code>.RData Kaydı</code></h4>
+<p>Düzenlenen veri kümeleri, gelecekteki oturumlarda yeniden üretilebilirlik ve daha hızlı işleme imkânı sunmak amacıyla birleştirilerek <code>.RData</code> formatında <code>kadın_projesi_verisi.RData</code> ismiyle kaydedilmiştir.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Kodu Görmek İçin Tıklayınız</summary>
@@ -4941,6 +4956,7 @@ vertical-align: -.125em;
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
+</section>
 </section>
 <section id="veri-örneği" class="level2">
 <h2 class="anchored" data-anchor-id="veri-örneği">Veri Örneği</h2>
@@ -5096,31 +5112,51 @@ vertical-align: -.125em;
 </div>
 </section>
 <section id="isgucu_verisi" class="level2">
-<h2 class="anchored" data-anchor-id="isgucu_verisi">isgucu_verisi</h2>
-<p>Değişkenler: yil: 2015-2024 yılları cinsiyet: Kadın ve Erkek egitim_duzeyi: Okuma yazma bilmeyen, ilköğretim, genel lise, lise dengi mesleki okul, yükseköğretim olmak üzere beş seviye istihdam_orani: istihdam oranı(%) issizlik_orani: işsizlik oranı (%)</p>
+<h2 class="anchored" data-anchor-id="isgucu_verisi"><code>isgucu_verisi</code></h2>
+<p><strong>Değişkenler:</strong><br>
+- <code>yil</code>: 2015-2024 yılları<br>
+- <code>cinsiyet</code>: Kadın ve Erkek<br>
+- <code>egitim_duzeyi</code>: <code>Okuma yazma bilmeyen</code>, <code>ilköğretim</code>, <code>genel lise</code>, <code>lise dengi mesleki okul</code>, <code>yükseköğretim</code> olmak üzere beş seviye<br>
+- <code>istihdam_orani</code>: İstihdam oranı (%)<br>
+- <code>issizlik_orani</code>: İşsizlik oranı (%)</p>
 </section>
 <section id="bolge_duzeyi" class="level2">
-<h2 class="anchored" data-anchor-id="bolge_duzeyi">bolge_duzeyi</h2>
-<p>Değişkenler: bolge: İBBS 2. düzey bölgeleri(26 bölge) cinsiyet: Kadın ve Erkek istihdam_orani: İstihdam oranı (%)</p>
+<h2 class="anchored" data-anchor-id="bolge_duzeyi"><code>bolge_duzeyi</code></h2>
+<p><strong>Değişkenler:</strong><br>
+- <code>bolge</code>: İBBS 2. düzey bölgeleri (26 bölge)<br>
+- <code>cinsiyet</code>: Kadın ve Erkek<br>
+- <code>istihdam_orani</code>: İstihdam oranı (%)</p>
 </section>
 <section id="cocuga_bagli_istihdam_orani" class="level2">
-<h2 class="anchored" data-anchor-id="cocuga_bagli_istihdam_orani">cocuga_bagli_istihdam_orani</h2>
-<p>Çocuk sahibi olma durumuna Değişkenler: yil: 2015-1023 yılları cinsiyet: Kadın ve Erkek 3yasalti_cocuk_olan_istihdam_orani: Üç yaş altı çocuk sahibi olanların istihdam oranı(%) cocuk_olmayan_istihdam_orani: Üç yaş altı çocuk sahibi olmayanların istihdam oranı (%)</p>
+<h2 class="anchored" data-anchor-id="cocuga_bagli_istihdam_orani"><code>cocuga_bagli_istihdam_orani</code></h2>
+<p><strong>Değişkenler:</strong><br>
+- <code>yil</code>: 2015-2023 yılları<br>
+- <code>cinsiyet</code>: Kadın ve Erkek<br>
+- <code>3yasalti_cocuk_olan_istihdam_orani</code>: Üç yaş altı çocuk sahibi olanların istihdam oranı (%)<br>
+- <code>cocuk_olmayan_istihdam_orani</code>: Üç yaş altı çocuğu olmayanların istihdam oranı (%)</p>
 </section>
 <section id="meslek_gruplarina_gore_kazanc" class="level2">
-<h2 class="anchored" data-anchor-id="meslek_gruplarina_gore_kazanc">meslek_gruplarina_gore_kazanc</h2>
-<p>Değişkenler: yil:2023 yılı cinsiyet: Kadın ve Erkek meslek: Çeşitli meslek grupları yillik_ort_kazanc: Yıllık ortalama kazanç(TL)</p>
+<h2 class="anchored" data-anchor-id="meslek_gruplarina_gore_kazanc"><code>meslek_gruplarina_gore_kazanc</code></h2>
+<p><strong>Değişkenler:</strong><br>
+- <code>yil</code>: 2023<br>
+- <code>cinsiyet</code>: Kadın ve Erkek<br>
+- <code>meslek</code>: Çeşitli meslek grupları<br>
+- <code>yillik_ort_kazanc</code>: Yıllık ortalama kazanç (TL)</p>
 </section>
 <section id="yillik_kazanc" class="level2">
-<h2 class="anchored" data-anchor-id="yillik_kazanc">yillik_kazanc</h2>
-<p>Değişkenler: yil: 2023 cinsiyet: Kadın ve Erkek egitim_duzeyi: İlkokul ve altı, ilköğretim ve ortaokul,lise, yükseköğretim olmak üzere dört düzey yillik_ort_brüt_kazanc: Yıllık ortalama brüt kazanç (TL)</p>
+<h2 class="anchored" data-anchor-id="yillik_kazanc"><code>yillik_kazanc</code></h2>
+<p><strong>Değişkenler:</strong><br>
+- <code>yil</code>: 2023<br>
+- <code>cinsiyet</code>: Kadın ve Erkek<br>
+- <code>egitim_duzeyi</code>: <code>İlkokul ve altı</code>, <code>ilköğretim ve ortaokul</code>, <code>lise</code>, <code>yükseköğretim</code> olmak üzere dört düzey<br>
+- <code>yillik_ort_brüt_kazanc</code>: Yıllık ortalama brüt kazanç (TL)</p>
 </section>
 <section id="yonetici" class="level2">
-<h2 class="anchored" data-anchor-id="yonetici">yonetici</h2>
-<p>Değişkenler: yil: 2015-2023 yılları cinsiyet: Kadın ve Erkek orta_üst_yönetici_orani: Orta ve üst yönetici oranı(%)</p>
-</section>
-<section id="görselleştirme-ve-analiz" class="level2">
-<h2 class="anchored" data-anchor-id="görselleştirme-ve-analiz">3.2. Görselleştirme ve Analiz</h2>
+<h2 class="anchored" data-anchor-id="yonetici"><code>yonetici</code></h2>
+<p><strong>Değişkenler:</strong><br>
+- <code>yil</code>: 2015-2023 yılları<br>
+- <code>cinsiyet</code>: Kadın ve Erkek<br>
+- <code>orta_üst_yönetici_orani</code>: Orta ve üst düzey yönetici oranı (%) ## 3.2. Görselleştirme ve Analiz</p>
 <p>Kadınların işgücü piyasasındaki konumlarını anlamamıza yardımcı olması amacıyla her bir veri setinden grafikler çizilmiş ve yorumlanmıştır.</p>
 </section>
 <section id="bölgelere-göre-istihdam-oranı" class="level2">
