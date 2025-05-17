@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.17)  17 MAY 2025 20:08
+This is XeTeX, Version 3.141592653-2.6-0.999997 (TeX Live 2025) (preloaded format=xelatex 2025.5.17)  18 MAY 2025 02:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -43528,21 +43528,21 @@ Invalid UTF-8 byte or sequence at line 206 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 206 replaced by U+FFFD.
 Invalid UTF-8 byte or sequence at line 206 replaced by U+FFFD.
 
-! LaTeX Error: Cannot determine size of graphic in images/we can do it.gif (no BoundingBox).
+! LaTeX Error: Cannot determine size of graphic in C:/Users/pinar/Masaüstü/we can do it.gif (no BoundingBox).
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.206 ...ght=\textheight]{images/we can do it.gif}
+l.206 ...C:/Users/pinar/Masaüstü/we can do it.gif}
                                                   
 Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
  
 Here is how much of TeX's memory you used:
- 24200 strings out of 472186
- 465682 string characters out of 5525834
+ 24201 strings out of 472186
+ 466539 string characters out of 5525834
  1155704 words of memory out of 5000000
  50474 multiletter control sequences out of 15000+600000
  630389 words of font info for 69 fonts, out of 8000000 for 9000
