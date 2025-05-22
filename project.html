@@ -199,6 +199,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#meslek_gruplarina_gore_kazanc" id="toc-meslek_gruplarina_gore_kazanc"><code>meslek_gruplarina_gore_kazanc</code></a></li>
   <li><a href="#yillik_kazanc" id="toc-yillik_kazanc"><code>yillik_kazanc</code></a></li>
   <li><a href="#yonetici" id="toc-yonetici"><code>yonetici</code></a></li>
+  <li><a href="#görselleştirme-ve-analiz" id="toc-görselleştirme-ve-analiz">3.2. Görselleştirme ve Analiz</a></li>
   <li><a href="#bölgelere-göre-istihdam-oranı" id="toc-bölgelere-göre-istihdam-oranı">Bölgelere Göre İstihdam Oranı</a></li>
   <li><a href="#eğitim-durumuna-göre-yıllık-kazanç-durumu" id="toc-eğitim-durumuna-göre-yıllık-kazanç-durumu">Eğitim Durumuna Göre Yıllık Kazanç Durumu</a></li>
   <li><a href="#meslek-gruplarına-göre-kazanç-durumu" id="toc-meslek-gruplarına-göre-kazanç-durumu">Meslek Gruplarına Göre Kazanç Durumu</a></li>
@@ -230,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="veriler-hakkında-genel-bilgi" class="level2">
 <h2>2.2 Veriler Hakkında Genel Bilgi</h2>
-<p>Çalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır. Son yıla ait veriler (2015-2024) ele alınmıştır.</p>
+<p>Çalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır. Son on yıla ait veriler (2015-2024) ele alınmıştır.</p>
 <p>Bu proje kapsamında kullanılan veri setleri şunlardır:</p>
 <ul>
 <li><code>bolge_duzeyi.xlsx</code>: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.</li>
@@ -277,31 +278,32 @@ Veri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır: - Oku
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;readxl&quot;)</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;ggplot2&quot;)</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;purrr&quot;, repos = &quot;https://cran.r-project.org&quot;)</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>bolge_duzeyi <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;bolge_duzeyi.xlsx&quot;</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>cocuga_bagli_istihdam_orani <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;cocuga_bagli_istihdam_orani.xlsx&quot;</span>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>meslek_gruplarina_gore_kazanc <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;meslek_gruplarina_gore_kazanc.xlsx&quot;</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>yillik_kazanc <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;yillik_kazanc.xlsx&quot;</span>)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>yonetici <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;yonetici.xlsx&quot;</span>)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>isgucu_verisi <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Isgucu_verisi.xlsx&quot;</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># .RData dosyasına kaydet</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  bolge_duzeyi,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  cocuga_bagli_istihdam_orani,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  meslek_gruplarina_gore_kazanc,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  yillik_kazanc,</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  yonetici,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  isgucu_verisi,</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;kadın_projesi_verisi.RData&quot;</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(purrr)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>bolge_duzeyi <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;bolge_duzeyi.xlsx&quot;</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>cocuga_bagli_istihdam_orani <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;cocuga_bagli_istihdam_orani.xlsx&quot;</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>meslek_gruplarina_gore_kazanc <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;meslek_gruplarina_gore_kazanc.xlsx&quot;</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>yillik_kazanc <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;yillik_kazanc.xlsx&quot;</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>yonetici <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;yonetici.xlsx&quot;</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>isgucu_verisi <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;Isgucu_verisi.xlsx&quot;</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># .RData dosyasına kaydet</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  bolge_duzeyi,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  cocuga_bagli_istihdam_orani,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  meslek_gruplarina_gore_kazanc,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  yillik_kazanc,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  yonetici,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  isgucu_verisi,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">file =</span> <span class="st">&quot;kadın_projesi_verisi.RData&quot;</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </details>
 </div>
 </section>
@@ -504,14 +506,17 @@ Veri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır: - Oku
 <p><strong>Değişkenler:</strong><br />
 - <code>yil</code>: 2015-2023 yılları<br />
 - <code>cinsiyet</code>: Kadın ve Erkek<br />
-- <code>orta_üst_yönetici_orani</code>: Orta ve üst düzey yönetici oranı (%) ## 3.2. Görselleştirme ve Analiz</p>
+- <code>orta_üst_yönetici_orani</code>: Orta ve üst düzey yönetici oranı (%)</p>
+</section>
+<section id="görselleştirme-ve-analiz" class="level2">
+<h2>3.2. Görselleştirme ve Analiz</h2>
 <p>Kadınların işgücü piyasasındaki konumlarını anlamamıza yardımcı olması amacıyla her bir veri setinden grafikler çizilmiş ve yorumlanmıştır.</p>
 </section>
 <section id="bölgelere-göre-istihdam-oranı" class="level2">
 <h2>Bölgelere Göre İstihdam Oranı</h2>
 <p>Bölge ve cinsiyete göre istihdam oranlarına ait grafiğe bakıldığında her bölgede erkek istihdam oranının kadın istihdam oranından fazla olduğu görülmektedir. 2023 yılında 15 ve daha yukarı yaştaki kadın nüfusun istihdam oranı %31,3, erkek nüfusun istihdam oranı ise %65,7’dir. İBBS 2.Düzeye göre en yüksek kadın istihdam oranı, %38,9 ile TR61 (Antalya, Isparta, Burdur) bölgesinde, en düşük kadın istihdam oranı ise %19,8 ile TRC3 (Mardin, Batman, Şırnak, Siirt) bölgesinde gerçekleşmiştir.</p>
 <p>Kadın istihdamının en az olduğu beş bölgeye bakıldığında neredeyse tamamının Doğu ve Güneydoğu bölgelerindeki illerden oluştuğu dikkat çekmektedir.</p>
-<p>Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla anlamlı şekilde daha yüksek olduğu görülmektedir. Bu durum, toplumsal cinsiyet temelli istihdam eşitsizliğinin bölgesel düzeyde yaygın bir sorun olduğunu ortaya koymaktadır.</p>
+<p>Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla daha yüksek olduğu görülmektedir. Bu durum, toplumsal cinsiyet temelli istihdam eşitsizliğinin bölgesel düzeyde yaygın bir sorun olduğunu ortaya koymaktadır.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Kodu Görmek İçin Tıklayınız</summary>
@@ -883,7 +888,7 @@ F-statistic: 35.47 on 3 and 96 DF,  p-value: 1.624e-15</code></pre>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik 1: İstihdam Oranı</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> egitim_sira, <span class="at">y =</span> istihdam_orani, <span class="at">color =</span> cinsiyet)) <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> my_colors) <span class="sc">+</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
@@ -896,7 +901,7 @@ F-statistic: 35.47 on 3 and 96 DF,  p-value: 1.624e-15</code></pre>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Grafik 2: İşsizlik Oranı</span></span>
 <span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>g2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(veri, <span class="fu">aes</span>(<span class="at">x =</span> egitim_sira, <span class="at">y =</span> issizlik_orani, <span class="at">color =</span> cinsiyet)) <span class="sc">+</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> my_colors) <span class="sc">+</span></span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>

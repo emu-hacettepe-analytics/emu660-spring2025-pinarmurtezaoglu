@@ -21,46 +21,53 @@ editor:
     wrap: sentence
 ---
 
-![](C:/Users/pinar/Masaüstü/we can do it.gif){width="150"}
-
+![](C:/Users/pinar/Masaüstü/we%20can%20do%20it.gif){width="150"}
 
 **Pınar MÜRTEZAOĞLU / Gamze KAZEL BOZKURT**
 
 ## 1. Proje Genel Bakışı ve Kapsamı
 
-Sosyal kalkınmanın sürdürülebilirliği için bireylerin yalnızca ekonomik değil, sosyal ve kültürel alanlarda da eşit fırsatlara sahip olması gerekmektedir. Ancak mevcut sosyoekonomik yapılar, özellikle kadınlar için bu fırsatlara erişimi engellemekte ve onları yapısal olarak dezavantajlı bir konuma itmektedir. Eğitim seviyeleri erkeklerle benzer olsa dahi, kadınlar istihdam ve işgücüne katılımda ciddi eşitsizliklerle karşılaşmaktadır.
+Sosyal kalkınmanın sürdürülebilirliği için bireylerin yalnızca ekonomik değil, sosyal ve kültürel alanlarda da eşit fırsatlara sahip olması gerekmektedir.
+Ancak mevcut sosyoekonomik yapılar, özellikle kadınlar için bu fırsatlara erişimi engellemekte ve onları yapısal olarak dezavantajlı bir konuma itmektedir.
+Eğitim seviyeleri erkeklerle benzer olsa dahi, kadınlar istihdam ve işgücüne katılımda ciddi eşitsizliklerle karşılaşmaktadır.
 
-Bu çalışma, kadın ve erkeklerin temel istihdam göstergelerini karşılaştırmalı olarak inceleyerek, toplumsal cinsiyete dayalı farkların yapısal nedenlerini ortaya koymayı amaçlamaktadır. Veri temelli analiz yaklaşımıyla politika yapıcılara yol gösterecek bulgular sunulması hedeflenmektedir. Çalışma kapsamında kullanılan veri seti açıklanmakta, cinsiyete göre eğitim, gelir, meslek ve bölgesel istihdam analiz edilmekte, ardından eğitim düzeyine göre regresyon modelleri kurulmakta ve elde edilen bulgular yorumlanarak öneriler sunulmaktadır.
+Bu çalışma, kadın ve erkeklerin temel istihdam göstergelerini karşılaştırmalı olarak inceleyerek, toplumsal cinsiyete dayalı farkların yapısal nedenlerini ortaya koymayı amaçlamaktadır.
+Veri temelli analiz yaklaşımıyla politika yapıcılara yol gösterecek bulgular sunulması hedeflenmektedir.
+Çalışma kapsamında kullanılan veri seti açıklanmakta, cinsiyete göre eğitim, gelir, meslek ve bölgesel istihdam analiz edilmekte, ardından eğitim düzeyine göre regresyon modelleri kurulmakta ve elde edilen bulgular yorumlanarak öneriler sunulmaktadır.
 
 ## 2. Veri
 
 ## 2.1 Veri Kaynağı
 
-Çalışma kapsamında **iki ayrı veri seti** kullanılmış ve analiz için birleştirilmiştir. Veriler, **Türkiye İstatistik Kurumu (TÜİK)** veri tabanından elde edilmiştir.
+Çalışma kapsamında **iki ayrı veri seti** kullanılmış ve analiz için birleştirilmiştir.
+Veriler, **Türkiye İstatistik Kurumu (TÜİK)** veri tabanından elde edilmiştir.
 
-Veri setlerinden ilki, [**İstatistiklerle Kadın 2024**](https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076) raporu kapsamında temin edilmiştir. Bu raporda kadınların **eğitim**, **istihdam**, **kazanç** ve **yöneticilik** durumlarına ilişkin istatistikler yer almaktadır.
+Veri setlerinden ilki, [**İstatistiklerle Kadın 2024**](https://data.tuik.gov.tr/Bulten/Index?p=Istatistiklerle-Kadin-2024-54076) raporu kapsamında temin edilmiştir.
+Bu raporda kadınların **eğitim**, **istihdam**, **kazanç** ve **yöneticilik** durumlarına ilişkin istatistikler yer almaktadır.
 
-Diğer veri seti ise, **TÜİK Veri Portalı** üzerinden sağlanan [**İşgücü İstatistikleri (2014 ve sonrası)**](https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC) veritabanından oluşturulmuştur. Bu veri seti, cinsiyet ve eğitim düzeyine göre işgücü, istihdam ve işsizlik oranlarını içermektedir.
+Diğer veri seti ise, **TÜİK Veri Portalı** üzerinden sağlanan [**İşgücü İstatistikleri (2014 ve sonrası)**](https://data.tuik.gov.tr/Search/Search?text=i%C5%9Fg%C3%BCc%C3%BC) veritabanından oluşturulmuştur.
+Bu veri seti, cinsiyet ve eğitim düzeyine göre işgücü, istihdam ve işsizlik oranlarını içermektedir.
 
 Tüm veriler, TÜİK’in çevrimiçi veri portalından `.xlsx` formatında indirilmiştir.
 
 ## 2.2 Veriler Hakkında Genel Bilgi
 
-Çalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır. Son yıla ait veriler (2015-2024) ele alınmıştır.
+Çalışmada; kadınların eğitim düzeyi, bölgesel düzeyde istihdam oranları, ücret farklılıkları, işgücü içindeki konumları gibi değişkenler ele alınmış, aynı değişkenler üzerinden erkeklerle karşılaştırmalı analizler yapılmıştır.
+Son on yıla ait veriler (2015-2024) ele alınmıştır.
 
 Bu proje kapsamında kullanılan veri setleri şunlardır:
 
-- `bolge_duzeyi.xlsx`: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.
-- `cocuga_bagli_istihdam_orani.xlsx`: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.
-- `meslek_gruplarina_gore_kazanc.xlsx`: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).
-- `yillik_kazanc.xlsx`: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).
-- `yonetici.xlsx`: Yönetici pozisyonundaki kadın ve erkek oranları.
-- `isgucu_verisi.xlsx`: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları.
-
+-   `bolge_duzeyi.xlsx`: Türkiye’nin İBBS 2. düzey bölgelerine göre kadınların istihdam oranları.
+-   `cocuga_bagli_istihdam_orani.xlsx`: 3 yaş altı çocuğu olan ve çocuğu olmayan bireylerin istihdam oranları.
+-   `meslek_gruplarina_gore_kazanc.xlsx`: Meslek gruplarına göre yıllık ortalama kazançlar (kadın ve erkek).
+-   `yillik_kazanc.xlsx`: Kadın ve erkeklerin yıllık kazançları (eğitim düzeyine göre).
+-   `yonetici.xlsx`: Yönetici pozisyonundaki kadın ve erkek oranları.
+-   `isgucu_verisi.xlsx`: Eğitim düzeyine ve cinsiyete göre işsizlik ve istihdam oranları.
 
 ## 2.3 Verilerin Seçilme Sebebi
 
-Kadınların iş gücüne katılımı, Türkiye’de hem ekonomik büyüme hem de toplumsal cinsiyet eşitliği bağlamında kritik bir göstergedir. Bu veriler, kadınların iş gücü piyasasındaki konumlarını ve maruz kaldıkları yapısal eşitsizlikleri anlamak için seçilmiştir.
+Kadınların iş gücüne katılımı, Türkiye’de hem ekonomik büyüme hem de toplumsal cinsiyet eşitliği bağlamında kritik bir göstergedir.
+Bu veriler, kadınların iş gücü piyasasındaki konumlarını ve maruz kaldıkları yapısal eşitsizlikleri anlamak için seçilmiştir.
 
 Projede amaç:
 
@@ -70,28 +77,27 @@ Eğitim ve bölgesel etkenleri değerlendirmek
 
 Kadınların kazanç, istihdam ve yönetici pozisyonlarındaki durumlarını ortaya koymaktır.
 
-Bu çalışmada kullanılan veriler, kamuya açık ve ücretsiz olarak sunulan TÜİK veri tabanından elde edilmiştir. TÜİK, uluslararası standartlara uygunluğu ve ulusal düzeyde temsili veri sağlayabilme kapasitesi nedeniyle tercih edilmiştir.
+Bu çalışmada kullanılan veriler, kamuya açık ve ücretsiz olarak sunulan TÜİK veri tabanından elde edilmiştir.
+TÜİK, uluslararası standartlara uygunluğu ve ulusal düzeyde temsili veri sağlayabilme kapasitesi nedeniyle tercih edilmiştir.
 
 ## 2.4. Ön İşleme
 
 Verileri analiz için uygun hale getirmek amacıyla bazı düzenlemeler yapılmıştır.
 
 #### `Bilinmeyen Veri (NA)`
-Veri setinde yer alan `İşgücü Verileri` dosyasında, **ilköğretim eğitim düzeyinde** kadın ve erkek için **2021, 2022, 2023 ve 2024** yıllarına ait **istihdam oranı** ve **işsizlik oranı** verileri eksiktir (toplam `16 veri`).  
+
+Veri setinde yer alan `İşgücü Verileri` dosyasında, **ilköğretim eğitim düzeyinde** kadın ve erkek için **2021, 2022, 2023 ve 2024** yıllarına ait **istihdam oranı** ve **işsizlik oranı** verileri eksiktir (toplam `16 veri`).\
 İşsizlik oranındaki eksik verileri tamamlamak amacıyla, cinsiyete göre ilköğretim düzeyindeki mevcut verilerin ortalaması alınmıştır; aynı işlem istihdam oranı için de uygulanmıştır.
 
 #### `Eğitim Düzeyi`
-Eğitim düzeyine ilişkin veriler **sıralı sayı haline** getirilerek analiz için yeniden kodlanmıştır.  
-Veri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır:
-- Okuma yazma bilmeyen
-- İlköğretim
-- Genel lise
-- Lise dengi mesleki okul
-- Yükseköğretim
+
+Eğitim düzeyine ilişkin veriler **sıralı sayı haline** getirilerek analiz için yeniden kodlanmıştır.\
+Veri tablolarında eğitim düzeyleri şu beş kategoriye ayrılmıştır: - Okuma yazma bilmeyen - İlköğretim - Genel lise - Lise dengi mesleki okul - Yükseköğretim
 
 Analizi kolaylaştırmak amacıyla bu kategoriler sırasıyla `1`, `2`, `3`, `4` ve `5` olarak tanımlanmıştır.
 
 #### `.RData Kaydı`
+
 Düzenlenen veri kümeleri, gelecekteki oturumlarda yeniden üretilebilirlik ve daha hızlı işleme imkânı sunmak amacıyla birleştirilerek `.RData` formatında `kadın_projesi_verisi.RData` ismiyle kaydedilmiştir.
 
 ```{r setup, message=FALSE}
@@ -102,6 +108,7 @@ Düzenlenen veri kümeleri, gelecekteki oturumlarda yeniden üretilebilirlik ve 
 #install.packages("readxl")
 #install.packages("ggplot2")
 #install.packages("purrr", repos = "https://cran.r-project.org")
+
 library(readxl)
 library(ggplot2)
 library(tidyr)
@@ -130,6 +137,7 @@ save(
 ```
 
 ## Veri Örneği
+
 Düzenlenmiş veri setine bir örnek olması için 5 sütun, 100 satırdan oluşan işgücü verisinin ilk 10 satırı aşağıda sunulmuştur:
 
 ```{r, message=FALSE, warning=FALSE}
@@ -140,13 +148,15 @@ kable(head(isgucu_verisi, 10), caption = "Tablo: 2015-2024 Yillari Cinsiyete Gor
 
 ## 3.Analiz
 
-Çalışmanın temel amacı, Türkiye’de işgücü piyasasında eğitim seviyesine göre cinsiyet farklılıklarını belirlemektir. Bu kapsamda çeşitli grafikler çizilmiş ve regresyon analizi yapılmıştır.
+Çalışmanın temel amacı, Türkiye’de işgücü piyasasında eğitim seviyesine göre cinsiyet farklılıklarını belirlemektir.
+Bu kapsamda çeşitli grafikler çizilmiş ve regresyon analizi yapılmıştır.
 
 ## 3.1. Keşifsel Veri Analizi
 
 ## 3.1.1. Veri Setine Genel Bakış
 
-Veri seti 6 ayrı veriden oluşmaktadır. Verilere dair ayrıntılı bilgi aşağıda yer almaktadır:
+Veri seti 6 ayrı veriden oluşmaktadır.
+Verilere dair ayrıntılı bilgi aşağıda yer almaktadır:
 
 ```{r}
 veri_listesi <- list(
@@ -171,55 +181,58 @@ veri_ozet <- map_dfr(names(veri_listesi), function(ad) {
 
 veri_ozet
 ```
+
 ## `isgucu_verisi`
 
-**Değişkenler:**  
-- `yil`: 2015-2024 yılları  
-- `cinsiyet`: Kadın ve Erkek  
-- `egitim_duzeyi`: `Okuma yazma bilmeyen`, `ilköğretim`, `genel lise`, `lise dengi mesleki okul`, `yükseköğretim` olmak üzere beş seviye  
-- `istihdam_orani`: İstihdam oranı (%)  
+**Değişkenler:**\
+- `yil`: 2015-2024 yılları\
+- `cinsiyet`: Kadın ve Erkek\
+- `egitim_duzeyi`: `Okuma yazma bilmeyen`, `ilköğretim`, `genel lise`, `lise dengi mesleki okul`, `yükseköğretim` olmak üzere beş seviye\
+- `istihdam_orani`: İstihdam oranı (%)\
 - `issizlik_orani`: İşsizlik oranı (%)
 
 ## `bolge_duzeyi`
 
-**Değişkenler:**  
-- `bolge`: İBBS 2. düzey bölgeleri (26 bölge)  
-- `cinsiyet`: Kadın ve Erkek  
+**Değişkenler:**\
+- `bolge`: İBBS 2.
+düzey bölgeleri (26 bölge)\
+- `cinsiyet`: Kadın ve Erkek\
 - `istihdam_orani`: İstihdam oranı (%)
 
 ## `cocuga_bagli_istihdam_orani`
 
-**Değişkenler:**  
-- `yil`: 2015-2023 yılları  
-- `cinsiyet`: Kadın ve Erkek  
-- `3yasalti_cocuk_olan_istihdam_orani`: Üç yaş altı çocuk sahibi olanların istihdam oranı (%)  
+**Değişkenler:**\
+- `yil`: 2015-2023 yılları\
+- `cinsiyet`: Kadın ve Erkek\
+- `3yasalti_cocuk_olan_istihdam_orani`: Üç yaş altı çocuk sahibi olanların istihdam oranı (%)\
 - `cocuk_olmayan_istihdam_orani`: Üç yaş altı çocuğu olmayanların istihdam oranı (%)
 
 ## `meslek_gruplarina_gore_kazanc`
 
-**Değişkenler:**  
-- `yil`: 2023  
-- `cinsiyet`: Kadın ve Erkek  
-- `meslek`: Çeşitli meslek grupları  
+**Değişkenler:**\
+- `yil`: 2023\
+- `cinsiyet`: Kadın ve Erkek\
+- `meslek`: Çeşitli meslek grupları\
 - `yillik_ort_kazanc`: Yıllık ortalama kazanç (TL)
 
 ## `yillik_kazanc`
 
-**Değişkenler:**  
-- `yil`: 2023  
-- `cinsiyet`: Kadın ve Erkek  
-- `egitim_duzeyi`: `İlkokul ve altı`, `ilköğretim ve ortaokul`, `lise`, `yükseköğretim` olmak üzere dört düzey  
+**Değişkenler:**\
+- `yil`: 2023\
+- `cinsiyet`: Kadın ve Erkek\
+- `egitim_duzeyi`: `İlkokul ve altı`, `ilköğretim ve ortaokul`, `lise`, `yükseköğretim` olmak üzere dört düzey\
 - `yillik_ort_brüt_kazanc`: Yıllık ortalama brüt kazanç (TL)
 
 ## `yonetici`
 
-**Değişkenler:**  
-- `yil`: 2015-2023 yılları  
-- `cinsiyet`: Kadın ve Erkek  
+**Değişkenler:**\
+- `yil`: 2015-2023 yılları\
+- `cinsiyet`: Kadın ve Erkek\
 - `orta_üst_yönetici_orani`: Orta ve üst düzey yönetici oranı (%)
+
 ## 3.2. Görselleştirme ve Analiz
 
-Kadınların işgücü piyasasındaki konumlarını anlamamıza yardımcı olması amacıyla her bir veri setinden grafikler çizilmiş ve yorumlanmıştır.  
+Kadınların işgücü piyasasındaki konumlarını anlamamıza yardımcı olması amacıyla her bir veri setinden grafikler çizilmiş ve yorumlanmıştır.
 
 ## Bölgelere Göre İstihdam Oranı
 
@@ -229,11 +242,10 @@ Bölge ve cinsiyete göre istihdam oranlarına ait grafiğe bakıldığında her
 
 Kadın istihdamının en az olduğu beş bölgeye bakıldığında neredeyse tamamının Doğu ve Güneydoğu bölgelerindeki illerden oluştuğu dikkat çekmektedir.
 
-Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla anlamlı şekilde daha yüksek olduğu görülmektedir.
+Hemen her bölgede erkeklerin istihdam oranının kadınlara kıyasla daha yüksek olduğu görülmektedir.
 Bu durum, toplumsal cinsiyet temelli istihdam eşitsizliğinin bölgesel düzeyde yaygın bir sorun olduğunu ortaya koymaktadır.
 
 ```{r}
-
 # Geçici bir ortamda sadece bolge_duzeyi verisini yükle
 temp_env <- new.env()
 load("kadın_projesi_verisi.RData", envir = temp_env)
@@ -268,8 +280,7 @@ ggplot(veri, aes(x = istihdam_orani, y = bolge, fill = cinsiyet)) +
 
 ## Eğitim Durumuna Göre Yıllık Kazanç Durumu
 
-Eğitim düzeyine göre kadın ve erkek için yıllık kazanç miktarları grafiğine bakıldığında
-2023 yılı verilerine göre kazanç düzeylerinin hem erkeklerde hem de kadınlarda eğitim durumu ile birlikte yükseldiği görülmektedir.
+Eğitim düzeyine göre kadın ve erkek için yıllık kazanç miktarları grafiğine bakıldığında 2023 yılı verilerine göre kazanç düzeylerinin hem erkeklerde hem de kadınlarda eğitim durumu ile birlikte yükseldiği görülmektedir.
 Ancak eğitim seviyesi arttıkça cinsiyetler arası kazanç farkı belirginleşmektedir.
 Bu durum, özellikle yükseköğretim mezunları arasında ciddi bir gelir eşitsizliğine işaret etmektedir.
 Eğitim durumuna göre en yüksek yıllık ortalama brüt kazancı yükseköğretim eğitim düzeyine sahip olanlar elde etmiş olup, bu eğitim düzeyinde yıllık ortalama brüt kazanç erkeklerde 431 bin 364 TL, kadınlarda ise 354 bin 149 TL olmuştur.
@@ -475,7 +486,7 @@ ggplot(veri_long, aes(x = as.factor(yil), y = istihdam_orani, color = cinsiyet,
 
 ## Analiz
 
-işgücü verileri kullanılarak iki temel model oluşturulmuştur: İstihdam Oranı Modeli ve İşsizlik Oranı Modeli. 
+işgücü verileri kullanılarak iki temel model oluşturulmuştur: İstihdam Oranı Modeli ve İşsizlik Oranı Modeli.
 
 Analizde, cinsiyet ve eğitim düzeyi arasındaki etkileşimi gözlemlemek için doğrusal regresyon modelleri kullanılmıştır.
 
@@ -540,7 +551,7 @@ my_theme <- theme_minimal(base_size = 12)
 
 # Grafik 1: İstihdam Oranı
 g1 <- ggplot(veri, aes(x = egitim_sira, y = istihdam_orani, color = cinsiyet)) +
-  geom_point(size = 3) +
+  geom_point(size = 1) +
   geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +
   scale_color_manual(values = my_colors) +
   scale_x_continuous(
@@ -553,7 +564,7 @@ g1 <- ggplot(veri, aes(x = egitim_sira, y = istihdam_orani, color = cinsiyet)) +
 
 # Grafik 2: İşsizlik Oranı
 g2 <- ggplot(veri, aes(x = egitim_sira, y = issizlik_orani, color = cinsiyet)) +
-  geom_point(size = 3) +
+  geom_point(size = 1) +
   geom_smooth(method = "lm", se = FALSE, linewidth = 1.2) +
   scale_color_manual(values = my_colors) +
   scale_x_continuous(
@@ -570,23 +581,41 @@ g1 / g2 + plot_layout(ncol = 1)
 
 ## 4. Bulgular
 
-Bu çalışmada, eğitim düzeyi ile istihdam ve işsizlik oranları arasındaki ilişkiler, cinsiyet farklılıkları dikkate alınarak oluşturulan iki ayrı etkileşimli doğrusal regresyon modeli ile analiz edilmiştir. Her iki modelde de eğitim düzeyi (egitim_sira), cinsiyet ve bu iki değişkenin etkileşim terimi bağımsız değişken olarak kullanılmıştır. Eğitim düzeyine göre kadın ve erkek için istihdam oranı ve işsizlik oranı grafiklerle sunulmuştur. Grafiklerde kullanılan eğri çizgiler, doğrusal regresyon eğilimlerini göstermektedir.
+Bu çalışmada, eğitim düzeyi ile istihdam ve işsizlik oranları arasındaki ilişkiler, cinsiyet farklılıkları dikkate alınarak oluşturulan iki ayrı etkileşimli doğrusal regresyon modeli ile analiz edilmiştir.
+Her iki modelde de eğitim düzeyi (egitim_sira), cinsiyet ve bu iki değişkenin etkileşim terimi bağımsız değişken olarak kullanılmıştır.
+Eğitim düzeyine göre kadın ve erkek için istihdam oranı ve işsizlik oranı grafiklerle sunulmuştur.
+Grafiklerde kullanılan eğri çizgiler, doğrusal regresyon eğilimlerini göstermektedir.
 
-İstihdam oranı analizine göre; 
-Erkek bireylerde eğitim düzeyindeki her bir artışın istihdam oranını ortalama %9,05 oranında artırdığı görülmektedir (p < 0.001). Cinsiyet değişkeni açısından bakıldığında, kadın bireylerin eğitim düzeyi sabit tutulduğunda, istihdam oranlarının erkek bireylere kıyasla ortalama %31,42 daha düşük olduğu anlaşılmaktadır (p < 0.001). Ancak, eğitim düzeyindeki artışın kadınların istihdam oranı üzerindeki etkisi erkeklere kıyasla istatistiksel olarak anlamlı bir farklılık göstermemektedir (p = 0.659). Bu durum, eğitim düzeyinin kadınların istihdamı üzerindeki pozitif etkisinin sınırlı ve belirsiz olduğunu düşündürmektedir. Modelin açıklayıcılığı oldukça yüksektir (R² = 0.87), bu da modelin istihdam oranındaki değişimin büyük kısmını başarılı şekilde açıkladığını göstermektedir.
+İstihdam oranı analizine göre; Erkek bireylerde eğitim düzeyindeki her bir artışın istihdam oranını ortalama %9,05 oranında artırdığı görülmektedir (p \< 0.001).
+Cinsiyet değişkeni açısından bakıldığında, kadın bireylerin eğitim düzeyi sabit tutulduğunda, istihdam oranlarının erkek bireylere kıyasla ortalama %31,42 daha düşük olduğu anlaşılmaktadır (p \< 0.001).
+Ancak, eğitim düzeyindeki artışın kadınların istihdam oranı üzerindeki etkisi erkeklere kıyasla istatistiksel olarak anlamlı bir farklılık göstermemektedir (p = 0.659).
+Bu durum, eğitim düzeyinin kadınların istihdamı üzerindeki pozitif etkisinin sınırlı ve belirsiz olduğunu düşündürmektedir.
+Modelin açıklayıcılığı oldukça yüksektir (R² = 0.87), bu da modelin istihdam oranındaki değişimin büyük kısmını başarılı şekilde açıkladığını göstermektedir.
 
-İşsizlik oranı analizine göre;
-Erkek bireylerde eğitim düzeyindeki her bir artış, işsizlik oranında ortalama %1,75’lik bir azalma ile ilişkilidir (p < 0.001). Kadın bireyler için ise durum farklılık göstermektedir. Eğitim düzeyindeki her bir artış, kadınların işsizlik oranını ortalama %4,42 oranında artırmaktadır (p < 0.001). Bu bulgu, eğitim düzeyi yükseldikçe kadınların işsizlik riskinin arttığını göstermekte ve kadınların yüksek eğitim düzeyine sahip olsalar dahi işgücü piyasasına tam olarak entegre olamadıklarına işaret etmektedir. Ayrıca, kadınların işsizlik oranı, eğitim düzeyi sabit tutulduğunda, erkeklere kıyasla ortalama %9 daha düşüktür (p < 0.001). Ancak bu temel etki, eğitim düzeyine bağlı etkileşim dikkate alındığında değişkenlik göstermektedir. Modelin açıklayıcılığı orta düzeydedir (R² = 0.53).
+İşsizlik oranı analizine göre; Erkek bireylerde eğitim düzeyindeki her bir artış, işsizlik oranında ortalama %1,75’lik bir azalma ile ilişkilidir (p \< 0.001).
+Kadın bireyler için ise durum farklılık göstermektedir.
+Eğitim düzeyindeki her bir artış, kadınların işsizlik oranını ortalama %4,42 oranında artırmaktadır (p \< 0.001).
+Bu bulgu, eğitim düzeyi yükseldikçe kadınların işsizlik riskinin arttığını göstermekte ve kadınların yüksek eğitim düzeyine sahip olsalar dahi işgücü piyasasına tam olarak entegre olamadıklarına işaret etmektedir.
+Ayrıca, kadınların işsizlik oranı, eğitim düzeyi sabit tutulduğunda, erkeklere kıyasla ortalama %9 daha düşüktür (p \< 0.001).
+Ancak bu temel etki, eğitim düzeyine bağlı etkileşim dikkate alındığında değişkenlik göstermektedir.
+Modelin açıklayıcılığı orta düzeydedir (R² = 0.53).
 
-Kadınlarda eğitim seviyesi arttıkça beklentiler de artıyor ama uygun iş bulamama ihtimali yüksek olduğundan işsizlik oranı artıyor olabilir. Ayrıca nitelikli kadın işgücünün çalışma hayatına tam olarak entegre olamaması, cam tavan etkisi, ataerkil yapılar gibi sosyal faktörler de bu durumu etkiliyor olabilir.
+Kadınlarda eğitim seviyesi arttıkça beklentiler de artıyor ama uygun iş bulamama ihtimali yüksek olduğundan işsizlik oranı artıyor olabilir.
+Ayrıca nitelikli kadın işgücünün çalışma hayatına tam olarak entegre olamaması, cam tavan etkisi, ataerkil yapılar gibi sosyal faktörler de bu durumu etkiliyor olabilir.
 
 ## 5. Sonuç ve Öneriler
 
-Regresyon analizinden elde edilen bulgular, Türkiye’de eğitim düzeyinin istihdam ve işsizlik oranları üzerindeki etkisinin cinsiyet temelli anlamlı farklılıklar içerdiğini ortaya koymaktadır. Erkek bireylerde eğitim düzeyi arttıkça hem istihdam oranı yükselmekte hem de işsizlik oranı azalmaktadır. Buna karşılık, kadın bireylerde eğitim düzeyinin istihdam üzerindeki etkisi istatistiksel olarak anlamlı değildir; işsizlik oranı ise eğitim düzeyi arttıkça belirgin şekilde yükselmektedir.
+Regresyon analizinden elde edilen bulgular, Türkiye’de eğitim düzeyinin istihdam ve işsizlik oranları üzerindeki etkisinin cinsiyet temelli anlamlı farklılıklar içerdiğini ortaya koymaktadır.
+Erkek bireylerde eğitim düzeyi arttıkça hem istihdam oranı yükselmekte hem de işsizlik oranı azalmaktadır.
+Buna karşılık, kadın bireylerde eğitim düzeyinin istihdam üzerindeki etkisi istatistiksel olarak anlamlı değildir; işsizlik oranı ise eğitim düzeyi arttıkça belirgin şekilde yükselmektedir.
 
-Kadınların istihdam oranları, aynı eğitim düzeyine sahip erkeklere kıyasla ortalama %31 daha düşük seviyededir. Eğitim düzeyi yükseldikçe istihdam oranında artış beklenirken, bu artış kadınlar açısından hem daha sınırlı kalmakta hem de istatistiksel olarak anlamlılık taşımamaktadır. Diğer yandan, kadınların işsizlik oranı eğitim düzeyindeki her bir artışta ortalama %4’ün üzerinde artmaktadır. Bu bulgular, kadınların yüksek eğitim düzeyine sahip olmalarına rağmen istihdam edilme olasılıklarının düşük olduğunu ve işsizlik riskiyle daha fazla karşı karşıya kaldıklarını göstermektedir.
+Kadınların istihdam oranları, aynı eğitim düzeyine sahip erkeklere kıyasla ortalama %31 daha düşük seviyededir.
+Eğitim düzeyi yükseldikçe istihdam oranında artış beklenirken, bu artış kadınlar açısından hem daha sınırlı kalmakta hem de istatistiksel olarak anlamlılık taşımamaktadır.
+Diğer yandan, kadınların işsizlik oranı eğitim düzeyindeki her bir artışta ortalama %4’ün üzerinde artmaktadır.
+Bu bulgular, kadınların yüksek eğitim düzeyine sahip olmalarına rağmen istihdam edilme olasılıklarının düşük olduğunu ve işsizlik riskiyle daha fazla karşı karşıya kaldıklarını göstermektedir.
 
-Bu durum, yalnızca eğitim düzeyinin artırılmasının kadınların işgücü piyasasındaki dezavantajlı konumlarını ortadan kaldırmak için yeterli olmadığını göstermektedir. Dolayısıyla, kadın istihdamını artırmaya yönelik politikaların yalnızca bireysel yetkinlikleri ve eğitim düzeylerini hedef alması değil; aynı zamanda yapısal ve kurumsal engelleri ortadan kaldırmaya yönelik toplumsal cinsiyet eşitliğine dayalı çok boyutlu yaklaşımlar içermesi gerektiği açıktır.
+Bu durum, yalnızca eğitim düzeyinin artırılmasının kadınların işgücü piyasasındaki dezavantajlı konumlarını ortadan kaldırmak için yeterli olmadığını göstermektedir.
+Dolayısıyla, kadın istihdamını artırmaya yönelik politikaların yalnızca bireysel yetkinlikleri ve eğitim düzeylerini hedef alması değil; aynı zamanda yapısal ve kurumsal engelleri ortadan kaldırmaya yönelik toplumsal cinsiyet eşitliğine dayalı çok boyutlu yaklaşımlar içermesi gerektiği açıktır.
 
 Türkiye’de kadınların istihdama dahil edilmesi, işsizlik oranlarının azaltılması ve her alanda mevcut durumlarının iyileştirilmesi konusunda çok daha fazla politika uygulanması, yeni politikalar oluşturulması ve en önemlisi istikrarlı bir duruş sergilenmesi gerekmektedir.
 Bu konuda yapılacak en önemli adımlardan biri toplumun bilinçlendirilmesidir.
